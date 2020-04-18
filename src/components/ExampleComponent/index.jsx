@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ExampleComponent = () => <p>Component</p>;
+const ExampleComponent = () => <p data-test="component">Component</p>;
 
 ExampleComponent.defaultProps = {};
 
