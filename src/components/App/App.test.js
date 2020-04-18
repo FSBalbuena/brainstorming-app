@@ -1,9 +1,12 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import App from '.';
+import { shallow } from 'enzyme';
+import { findByTestAtrr } from 'utils/test';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App root test', () => {
+  let wrapper = shallow(<App />);
+  it('App main div renders', () => {
+    const app = findByTestAtrr(wrapper, 'app');
+    expect(app.length).toBe(1);
+  });
 });

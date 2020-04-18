@@ -7,7 +7,7 @@ const allMiddlewares = [thunk, logger];
 /**
  * createStoreWithMiddlewares is used on tests
  */
-const createStoreWithMiddlewares = applyMiddleware(...allMiddlewares)(
+export const createStoreWithMiddlewares = applyMiddleware(...allMiddlewares)(
   createStore
 );
 
