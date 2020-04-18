@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { Home, Brainstorming } from 'views';
+import 'semantic-ui-css/semantic.min.css';
+
 function App() {
   return (
     <Switch>
