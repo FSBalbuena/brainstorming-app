@@ -1,16 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchSomeAction } from 'store/actions/exampleAction';
-import PropTypes from 'prop-types';
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { setBrainstormingSession } from 'store/actions/brainstormingActions';
+import CompleteModal from 'components/CompleteModal';
+import BrainstormingFormContainer from 'containers/BrainstormingFormContainer';
 
-const NewBrainstorming = () => {
+const NewBrainstorming = ({ history }) => {
   const dispatch = useDispatch();
+  const formRef = useRef();
 
-  useEffect(() => {
-    dispatch(fetchSomeAction());
-  }, []);
+  const handleCreate = () => {
+    formRef.current.handleSubmit();
+  };
 
-  return <p>Example Container</p>;
+  const handleSubmit = values => {
+    dispatch(setBrainstormingSession(values));
+    goBackToHome();
+  };
+
+  const goBackToHome = () => history.push('/');
+
+  const modalProps = {
+    header: 'New Brainstorming',
+    cancel: {
+      content: 'Cancel',
+      color: 'red',
+      onClick: goBackToHome,
+    },
+    create: {
+      content: 'Create',
+      color: 'teal',
+      onClick: handleCreate,
+      type: 'submit',
+    },
+  };
+  const formProps = {
+    formRef,
+    onSubmit: handleSubmit,
+  };
+  return (
+    <CompleteModal {...modalProps}>
+      <BrainstormingFormContainer {...formProps} />
+    </CompleteModal>
+  );
 };
 
-export default NewBrainstorming;
+export default withRouter(NewBrainstorming);
