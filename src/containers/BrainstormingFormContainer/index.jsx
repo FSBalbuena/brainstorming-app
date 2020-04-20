@@ -7,12 +7,12 @@ import BrainstormingForm from 'components/Brainstorming/BrainstormingForm';
 const BrainstormingFormContainer = ({ formRef, onSubmit }) => {
   const formikProps = {
     initialValues: {
-      name: '',
+      admin: '',
       sessionTitle: '',
       goal: '',
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required('Session`s admin required'),
+      admin: yup.string().required('Session`s admin required'),
       sessionTitle: yup.string().required('Session`s title required'),
       goal: yup.string().required('Session`s goal required'),
     }),
@@ -29,7 +29,7 @@ const BrainstormingFormContainer = ({ formRef, onSubmit }) => {
   };
   const fields = [
     {
-      name: 'name',
+      name: 'admin',
       label: 'Name',
       style: styles.nameInput,
       placeholder: 'John Doe',
@@ -49,7 +49,7 @@ const BrainstormingFormContainer = ({ formRef, onSubmit }) => {
       name: 'goal',
       label: 'Main Goal',
       placeholder:
-        'Tell us more about the problem wich this sesion will help with...',
+        'Tell us more about the problem this session will help to solve...',
       Component: Form.TextArea,
       error: errors => errors.goal || null,
     },
