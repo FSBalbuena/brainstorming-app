@@ -15,7 +15,6 @@ const NewBrainstorming = ({ history }) => {
 
   const handleSubmit = values => {
     dispatch(setBrainstormingSession(values));
-    goBackToHome();
   };
 
   const goBackToHome = () => history.push('/');

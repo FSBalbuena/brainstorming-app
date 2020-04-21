@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchSomeAction } from 'store/actions/exampleAction';
 import PropTypes from 'prop-types';
-import { Header } from 'semantic-ui-react';
+import Session from 'components/Brainstorming/Session';
 
 const BrainstormingSession = ({ session }) => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const BrainstormingSession = ({ session }) => {
     dispatch(fetchSomeAction());
   }, []);
 
-  return <Header>Brainstorming</Header>;
+  return <Session session={session} />;
 };
 
 BrainstormingSession.defaultProps = {

@@ -1,13 +1,17 @@
 import { SET_BRAINSTORMING_SESSION } from 'data/actionsConstants';
 
 const initialState = {
-  data: null,
+  admin: 'Federico Balbuena',
+  sessionTitle: 'Brainstorming Session',
+  goal:
+    'Provide ideas to solve problems due to business, logistics, systems, or products.',
+  url:
+    'http://ww.short.url/c0opq345678902345678dfghjkertyu345678cfgbjhnkmj-hbdsuybsye45678',
 };
-
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_BRAINSTORMING_SESSION:
-      return { data: action.payload };
+      return action.payload;
     default:
       return state;
   }

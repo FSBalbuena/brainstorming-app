@@ -3,7 +3,7 @@ import Component from '.';
 import { shallow } from 'enzyme';
 import { findByTestAtrr, checkProps } from 'utils/test';
 
-describe('ExampleComponent test', () => {
+xdescribe('ExampleComponent test', () => {
   describe('Checking Proptypes', () => {
     xit('shouldn`t fire a warning if good props are passed', () => {
       let expectedProps = {};
@@ -24,7 +24,7 @@ describe('ExampleComponent test', () => {
     beforeEach(() => {
       wrapper = shallow(<Component />);
     });
-    it('it renders with out crashing', () => {
+    xit('it renders with out crashing', () => {
       let component = findByTestAtrr(wrapper, 'component');
       expect(component.length).toBe(1);
     });
