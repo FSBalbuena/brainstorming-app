@@ -1,15 +1,14 @@
 import React from 'react';
-import BrainstormingHeader from './components/Header';
-import { Container, Divider } from 'semantic-ui-react';
-import styles from 'components/Brainstorming/Session/styles';
+import { Container } from 'semantic-ui-react';
+import styles from 'components/Brainstorming/styles';
+import PropTypes from 'prop-types';
 
-const Session = ({ session }) => {
-  return (
-    <Container style={styles.container}>
-      <BrainstormingHeader {...session} />
-      <Divider />
-    </Container>
-  );
+const Session = ({ children }) => {
+  return <Container style={styles.container}>{children}</Container>;
+};
+
+Session.propTypes = {
+  children: PropTypes.element,
 };
 
 export default Session;

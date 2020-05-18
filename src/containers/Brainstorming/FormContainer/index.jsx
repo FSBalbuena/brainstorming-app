@@ -2,9 +2,10 @@ import React from 'react';
 import * as yup from 'yup';
 import { Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import BrainstormingForm from 'components/Brainstorming/BrainstormingForm';
 
-const BrainstormingFormContainer = ({ formRef, onSubmit }) => {
+import BrainstormingForm from 'components/Brainstorming/Form';
+
+const FormContainer = ({ formRef, onSubmit }) => {
   const formikProps = {
     initialValues: {
       admin: '',
@@ -63,9 +64,9 @@ const BrainstormingFormContainer = ({ formRef, onSubmit }) => {
   return <BrainstormingForm {...props} />;
 };
 
-BrainstormingFormContainer.propTypes = {
+FormContainer.propTypes = {
   formRef: PropTypes.object,
   onSubmit: PropTypes.func,
 };
 
-export default BrainstormingFormContainer;
+export default FormContainer;

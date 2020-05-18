@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { setBrainstormingSession } from 'store/actions/brainstormingActions';
+
+import { setBrainstormingSession } from 'store/actions/brainstorming';
+import FormContainer from 'containers/Brainstorming/FormContainer';
 import CompleteModal from 'components/CompleteModal';
-import BrainstormingFormContainer from 'containers/BrainstormingFormContainer';
 
 const NewBrainstorming = ({ history }) => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const NewBrainstorming = ({ history }) => {
   };
   return (
     <CompleteModal {...modalProps}>
-      <BrainstormingFormContainer {...formProps} />
+      <FormContainer {...formProps} />
     </CompleteModal>
   );
 };

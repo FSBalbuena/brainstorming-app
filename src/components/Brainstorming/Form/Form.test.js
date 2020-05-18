@@ -37,9 +37,27 @@ describe('ExampleComponent test', () => {
    * ----------------------------------
    */
   describe('Testing Render', () => {
+    let expectedProps = {
+      formikProps: {
+        initialValues: {
+          name: '',
+          sessionTitle: '',
+          goal: '',
+        },
+        validationSchema: yup.object().shape({
+          name: yup.string().required('Session`s admin required'),
+          sessionTitle: yup.string().required('Session`s title required'),
+          goal: yup.string().required('Session`s goal required'),
+        }),
+        onSubmit: () => {},
+      },
+      formRef: {},
+      fields: [{}],
+      styles: {},
+    };
     let wrapper;
     beforeEach(() => {
-      wrapper = shallow(<Component />);
+      wrapper = shallow(<Component {...expectedProps} />);
     });
     it('it renders with out crashing', () => {
       let component = findByTestAtrr(wrapper, 'form');

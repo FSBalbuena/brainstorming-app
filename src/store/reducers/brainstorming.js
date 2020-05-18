@@ -1,4 +1,7 @@
-import { SET_BRAINSTORMING_SESSION } from 'data/actionsConstants';
+import {
+  SET_BRAINSTORMING_SESSION,
+  SET_BRAINSTORMING_URL,
+} from 'data/actionsConstants';
 
 const initialState = {
   admin: 'Federico Balbuena',
@@ -12,6 +15,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SET_BRAINSTORMING_SESSION:
       return action.payload;
+    case SET_BRAINSTORMING_URL:
+      return { ...state, url: action.payload };
     default:
       return state;
   }
