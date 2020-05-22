@@ -21,4 +21,19 @@ export default {
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
+  tableBox: {
+    flex: '2',
+  },
+  tableBody: {
+    maxHeight: '50vh',
+    overflow: 'auto',
+  },
+  ideaFormBox: {
+    flex: '1',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  ideaForm: {
+    width: '80%',
+  },
 };

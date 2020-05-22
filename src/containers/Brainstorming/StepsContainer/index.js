@@ -1,5 +1,4 @@
 import React from 'react';
-import { Step } from 'semantic-ui-react';
 import { SessionSteps } from 'components/Brainstorming';
 const StepsContainer = ({ currentStep, onStepClick }) => {
   let steps = [

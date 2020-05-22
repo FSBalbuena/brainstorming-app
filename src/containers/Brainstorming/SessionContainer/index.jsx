@@ -6,6 +6,7 @@ import { placeSessionUrl } from 'store/actions/brainstorming';
 import Session from 'components/Brainstorming/Session';
 import HeaderContainer from '../HeaderContainer';
 import StepsContainer from '../StepsContainer';
+import StepViewsContainer from '../StepViewsContainer';
 
 const SessionContainer = () => {
   const dispatch = useDispatch();
@@ -16,13 +17,12 @@ const SessionContainer = () => {
     const url = window.location.href;
     dispatch(placeSessionUrl(url));
   }, [dispatch]);
-
   return (
     <Session>
       <HeaderContainer />
       <Divider />
       <StepsContainer currentStep={currentStep} onStepClick={onStepClick} />
-      {/*<StepViewsContainer currentStep={currentStep}/>*/}
+      <StepViewsContainer currentStep={currentStep} />
     </Session>
   );
 };
