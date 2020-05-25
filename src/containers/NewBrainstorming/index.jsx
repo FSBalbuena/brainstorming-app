@@ -1,19 +1,29 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { FormContainer } from 'containers/Brainstorming';
 import { CompleteModal } from 'components/Global';
 
-const NewBrainstorming = ({ history, setSession }) => {
+import { setSession } from 'store/actions/brainstorming';
+import { setId } from 'store/actions/auth';
+
+const NewBrainstorming = ({ history }) => {
+  const dispatch = useDispatch();
   const formRef = useRef();
+  const id = useSelector(state => state.auth.id);
+
+  useEffect(() => {
+    dispatch(setId());
+  }, []);
 
   const handleCreate = () => {
     formRef.current.handleSubmit();
   };
 
   const handleSubmit = values => {
-    setSession(values);
+    dispatch(setSession(values));
   };
 
   const goBackToHome = () => history.push('/');
@@ -36,6 +46,7 @@ const NewBrainstorming = ({ history, setSession }) => {
   const formProps = {
     formRef,
     onSubmit: handleSubmit,
+    adminId: id,
   };
   return (
     <CompleteModal {...modalProps}>

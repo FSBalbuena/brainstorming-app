@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { Divider } from 'semantic-ui-react';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setUrl } from 'store/actions/brainstorming';
 import { Session } from 'components/Brainstorming';
 import {
   HeaderContainer,
@@ -9,33 +9,21 @@ import {
   StepViewsContainer,
 } from 'containers/Brainstorming';
 
-const SessionContainer = ({ session, setSession }) => {
-  const [currentStep, setCurrentStep] = useState(1);
-
-  const onStepClick = (_, data) => setCurrentStep(data.step);
-
+const SessionContainer = () => {
+  const dispatch = useDispatch();
+  const { data: session } = useSelector(state => state.brainstorming);
   useEffect(() => {
     const url = window.location.href;
-    setSession(session => ({ ...session, url }));
+    dispatch(setUrl(url));
   }, []);
   return (
     <Session>
-      <HeaderContainer {...session} />
+      <HeaderContainer />
       <Divider />
-      <StepsContainer currentStep={currentStep} onStepClick={onStepClick} />
-      <StepViewsContainer currentStep={currentStep} />
+      <StepsContainer />
+      <StepViewsContainer currentStep={session.step} />
     </Session>
   );
-};
-
-SessionContainer.propTypes = {
-  session: PropTypes.shape({
-    admin: PropTypes.string,
-    title: PropTypes.string,
-    goal: PropTypes.string,
-    url: PropTypes.string,
-  }),
-  setSession: PropTypes.func,
 };
 
 export default SessionContainer;
