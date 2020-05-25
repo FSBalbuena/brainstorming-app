@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, Rating, Popup, Icon } from 'semantic-ui-react';
+import { Table, Rating, Popup } from 'semantic-ui-react';
 import styles from 'components/Brainstorming/brainstorming.module.scss';
+import { IdeaEdition } from 'containers/Brainstorming';
 
-const IdeaTable = ({ canRate, headers, ideas, handleRate }) => {
+const IdeaTable = ({ canRate, headers, ideas }) => {
   return (
     <div className={styles.tableBox}>
       <Table celled padded fixed className={styles.table}>
@@ -29,13 +30,7 @@ const IdeaTable = ({ canRate, headers, ideas, handleRate }) => {
                     return (
                       <Table.Cell
                         {...props}
-                        content={
-                          <Icon
-                            disabled={!canRate}
-                            name="pencil"
-                            className={canRate && styles.editIcon}
-                          />
-                        }
+                        content={<IdeaEdition canRate={canRate} idea={idea} />}
                       />
                     );
                   return (

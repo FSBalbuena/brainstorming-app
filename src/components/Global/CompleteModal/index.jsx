@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'semantic-ui-react';
 
-const ModalForm = ({ header, cancel, create, children }) => (
-  <Modal open={true} size="small" data-test="modal">
+const ModalForm = ({ header, cancel, create, children, ...rest }) => (
+  <Modal {...rest} size="small" data-test="modal">
     <Modal.Header data-test="header">{header}</Modal.Header>
     <Modal.Content>{children}</Modal.Content>
     <Modal.Actions>
@@ -15,11 +15,13 @@ const ModalForm = ({ header, cancel, create, children }) => (
 
 ModalForm.defaultProps = {
   header: 'New Brainstorming',
+  open: true,
   cancel: {},
   create: {},
 };
 
 ModalForm.propTypes = {
+  open: PropTypes.bool,
   header: PropTypes.string,
   cancel: PropTypes.shape({
     content: PropTypes.string,

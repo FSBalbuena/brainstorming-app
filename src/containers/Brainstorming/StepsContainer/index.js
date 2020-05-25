@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setStep } from 'store/actions/brainstorming';
 
 import { SessionSteps } from 'components/Brainstorming';
 import { makeSteps } from 'factory/brainstorming';
 
-const StepsContainer = ({ currentStep, onStepClick }) => {
-  const steps = makeSteps(currentStep, onStepClick);
-  return <SessionSteps steps={steps} />;
-};
+const StepsContainer = () => {
+  const dispatch = useDispatch();
+  const {
+    data: { step },
+  } = useSelector(state => state.brainstorming);
 
-StepsContainer.propTypes = {
-  currentStep: PropTypes.number,
-  onStepClick: PropTypes.func,
+  const onStepClick = (_, data) => dispatch(setStep(data.step));
+  const steps = makeSteps(step, onStepClick);
+  return <SessionSteps steps={steps} />;
 };
 
 export default StepsContainer;
