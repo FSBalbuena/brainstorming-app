@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import IdeaTable from 'components/Brainstorming/IdeaTable';
-import IdeaForm from 'components/Brainstorming/IdeaForm';
+
+import { IdeaTable, IdeaForm } from 'components/Brainstorming';
+import { headers } from 'factory/brainstorming';
+import styles from 'components/Brainstorming/brainstorming.module.scss';
 
 const StepViewsContainer = ({ currentStep }) => {
   const [value, setValue] = useState('');
@@ -10,15 +12,18 @@ const StepViewsContainer = ({ currentStep }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const newIdea = {
-      id: new Date().getTime(),
-      text: value,
-      rating: 0,
-    };
-    setideas([newIdea, ...ideas]);
-    setValue('');
+    if (!!value.trim()) {
+      const newIdea = {
+        id: new Date().getTime(),
+        text: value,
+        rating: 0,
+      };
+      setideas([newIdea, ...ideas]);
+      setValue('');
+    }
   };
   const handleChange = (_, { value }) => setValue(value);
+
   const handleRate = (_, { id, rating }) => {
     const updatedIdeas = ideas
       .slice()
@@ -27,6 +32,7 @@ const StepViewsContainer = ({ currentStep }) => {
   };
 
   const tableProps = {
+    headers,
     canRate,
     ideas,
     handleRate,
@@ -37,9 +43,10 @@ const StepViewsContainer = ({ currentStep }) => {
     value,
   };
   return (
-    <section style={{ display: 'flex' }}>
-      <IdeaTable {...tableProps} />
-      {currentStep === 1 && <IdeaForm {...formProps} />}
+    <section className={styles.stepsDisplay}>
+      {[1, 2].includes(currentStep) && <IdeaTable {...tableProps} />}
+      {[1].includes(currentStep) && <IdeaForm {...formProps} />}
+      {[3].includes(currentStep) && <p>Este es el 3er paso</p>}
     </section>
   );
 };

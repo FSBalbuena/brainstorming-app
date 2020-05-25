@@ -1,30 +1,38 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button, Popup } from 'semantic-ui-react';
-import styles from '../styles';
+import styles from 'components/Brainstorming/brainstorming.module.scss';
 
 const IdeaForm = ({ value, handleSubmit, handleChange }) => {
   const [open, setOpen] = useState(true);
   const handleClose = () => setOpen(false);
   const handleEnter = e => (e.keyCode == 13 ? handleSubmit(e) : null);
-
+  const popupMessage = 'Add ideas from here!';
+  const formLabel = 'Add a new idea';
+  const placeholder = 'This idea will solve the problem...';
+  const buttonText = 'Add';
   return (
-    <div style={styles.ideaFormBox} onKeyDown={handleEnter}>
+    <div className={styles.ideaFormBox} onKeyDown={handleEnter}>
       <Popup
         open={open}
         size="huge"
-        content="Agrega ideas a la tabla desde aqui!"
+        content={popupMessage}
         onClose={handleClose}
         trigger={
-          <Form style={styles.ideaForm} onSubmit={handleSubmit}>
+          <Form
+            className={styles.ideaForm}
+            data-test="form"
+            onSubmit={handleSubmit}
+          >
             <Form.TextArea
-              label="Añade una idea"
-              placeholder="Una idea loca"
+              label={formLabel}
+              data-test="text-area"
+              placeholder={placeholder}
               value={value}
               onChange={handleChange}
             />
             <Button type="submit" floated="right" color="teal">
-              Añadir
+              {buttonText}
             </Button>
           </Form>
         }
@@ -34,9 +42,9 @@ const IdeaForm = ({ value, handleSubmit, handleChange }) => {
 };
 
 IdeaForm.propTypes = {
-  value: PropTypes.string,
-  handleSubmit: PropTypes.func,
-  handleChange: PropTypes.func,
+  value: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default IdeaForm;

@@ -10,12 +10,12 @@ describe('ExampleComponent test', () => {
         formikProps: {
           initialValues: {
             name: '',
-            sessionTitle: '',
+            title: '',
             goal: '',
           },
           validationSchema: yup.object().shape({
             name: yup.string().required('Session`s admin required'),
-            sessionTitle: yup.string().required('Session`s title required'),
+            title: yup.string().required('Session`s title required'),
             goal: yup.string().required('Session`s goal required'),
           }),
           onSubmit: () => {},
@@ -41,12 +41,12 @@ describe('ExampleComponent test', () => {
       formikProps: {
         initialValues: {
           name: '',
-          sessionTitle: '',
+          title: '',
           goal: '',
         },
         validationSchema: yup.object().shape({
           name: yup.string().required('Session`s admin required'),
-          sessionTitle: yup.string().required('Session`s title required'),
+          title: yup.string().required('Session`s title required'),
           goal: yup.string().required('Session`s goal required'),
         }),
         onSubmit: () => {},

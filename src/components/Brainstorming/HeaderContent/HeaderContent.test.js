@@ -7,7 +7,7 @@ describe('HeaderContent test', () => {
   describe('Checking Proptypes', () => {
     it('shouldn`t fire a warning if good props are passed', () => {
       let expectedProps = {
-        sessionTitle: 'Title',
+        title: 'Title',
         goal: 'Goal',
       };
       const propsErr = checkProps(Component, expectedProps);
@@ -15,7 +15,7 @@ describe('HeaderContent test', () => {
     });
     it('should fire a warning if text is not a string', () => {
       let expectedProps = {
-        sessionTitle: 6,
+        title: 6,
         goal: null,
       };
       const propsErr = checkProps(Component, expectedProps);

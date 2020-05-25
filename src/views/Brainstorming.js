@@ -1,13 +1,16 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-
+import React, { useState } from 'react';
+import { isEmpty } from 'lodash';
 import SessionContainer from 'containers/Brainstorming/SessionContainer';
 import { NewBrainstorming } from 'containers';
 
 const Brainstorming = () => {
-  const brainstorming = useSelector(state => state.brainstorming);
+  const [session, setSession] = useState({});
 
-  return brainstorming ? <SessionContainer /> : <NewBrainstorming />;
+  return isEmpty(session) ? (
+    <NewBrainstorming setSession={setSession} />
+  ) : (
+    <SessionContainer session={session} setSession={setSession} />
+  );
 };
 
 export default Brainstorming;

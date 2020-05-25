@@ -2,13 +2,8 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Header, Input } from 'semantic-ui-react';
 import Action from './components/Action';
+import styles from 'components/Brainstorming/brainstorming.module.scss';
 
-const styles = {
-  copy: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-};
 const CopyToClipboard = ({ url, text }) => {
   const textAreaRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -27,7 +22,7 @@ const CopyToClipboard = ({ url, text }) => {
     onClick: copyToClipboard,
   };
   return (
-    <div style={styles.copy} data-test="copy">
+    <div className={styles.copy} data-test="copy">
       <Header content={text} as="h5" />
       <Input
         ref={textAreaRef}

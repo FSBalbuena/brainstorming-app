@@ -1,41 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, Rating, Popup } from 'semantic-ui-react';
-import styles from 'components/Brainstorming/styles';
+import { Table, Rating, Popup, Icon } from 'semantic-ui-react';
+import styles from 'components/Brainstorming/brainstorming.module.scss';
 
-const IdeaTable = ({ canRate, ideas, handleRate }) => {
+const IdeaTable = ({ canRate, headers, ideas, handleRate }) => {
   return (
-    <div style={styles.tableBox}>
-      <Table celled padded style={styles.table}>
+    <div className={styles.tableBox}>
+      <Table celled padded fixed className={styles.table}>
         <Table.Header>
           <Table.Row>
-            <Popup
-              content="Aqui se colocaran las ideas"
-              trigger={<Table.HeaderCell>Idea</Table.HeaderCell>}
-            />
-            <Popup
-              content="En el paso 2 podras puntuar tus ideas"
-              trigger={<Table.HeaderCell collapsing>Rating</Table.HeaderCell>}
-            />
+            {headers.map(({ content, text, props }) => (
+              <Popup
+                key={text}
+                content={content}
+                trigger={<Table.HeaderCell {...props}>{text}</Table.HeaderCell>}
+              />
+            ))}
           </Table.Row>
         </Table.Header>
       </Table>
-      <div style={styles.tableBody}>
-        <Table celled padded>
+      <div className={styles.tableBody}>
+        <Table celled padded fixed>
           <Table.Body>
-            {ideas.map(({ id, text, rating }) => (
-              <Table.Row key={id}>
-                <Table.Cell>{text}</Table.Cell>
-                <Table.Cell collapsing>
-                  <Rating
-                    id={id}
-                    disabled={!canRate}
-                    onRate={handleRate}
-                    icon="star"
-                    rating={rating}
-                    maxRating={5}
-                  />
-                </Table.Cell>
+            {ideas.map(idea => (
+              <Table.Row key={idea.id}>
+                {headers.map(({ value, props }) => {
+                  if (value === 'edit')
+                    return (
+                      <Table.Cell
+                        {...props}
+                        content={
+                          <Icon
+                            disabled={!canRate}
+                            name="pencil"
+                            className={canRate && styles.editIcon}
+                          />
+                        }
+                      />
+                    );
+                  return (
+                    <Table.Cell key={value} {...props}>
+                      {value === 'rating' ? (
+                        <Rating
+                          id={idea.id}
+                          disabled
+                          icon="star"
+                          rating={idea[value]}
+                          maxRating={5}
+                        />
+                      ) : (
+                        idea[value]
+                      )}
+                    </Table.Cell>
+                  );
+                })}
               </Table.Row>
             ))}
           </Table.Body>
@@ -49,6 +67,14 @@ IdeaTable.propTypes = {
   ideas: PropTypes.array,
   canRate: PropTypes.bool,
   handleRate: PropTypes.func,
+  headers: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.string,
+      text: PropTypes.string,
+      value: PropTypes.string,
+      props: PropTypes.object,
+    })
+  ),
 };
 
 export default IdeaTable;

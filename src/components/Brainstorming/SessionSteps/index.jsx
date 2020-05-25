@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const SessionSteps = ({ steps }) => {
   return (
-    <Step.Group ordered fluid data-test="session-step-group">
+    <Step.Group widths={3} ordered fluid data-test="session-step-group">
       {steps.map(({ title, description, ...rest }) => (
         <Step {...rest} key={title} data-test="session-step">
           <Step.Content>
