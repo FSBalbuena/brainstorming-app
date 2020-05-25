@@ -31,6 +31,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 this project is ment to be a online tool`s suite for entrepreneurship.
 
+### Standars
+
 ### Brainstorming
 
 A user can create a room and manage the brainstorming section on it.

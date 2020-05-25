@@ -22,6 +22,7 @@ export const checkProps = (component, expectedProps) =>
 /**
  *
  * @param {object} initialState
+ * @description given an initial state, creates a store ment to be used on testing
  */
 export const testStore = initialState =>
   createStoreWithMiddlewares(allReducers, initialState);

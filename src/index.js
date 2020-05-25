@@ -1,11 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+/**
+ * ---- Components
+ */
 import App from 'components/App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+
 import store from 'store';
 import * as serviceWorker from './serviceWorker';
+
+/**
+ * needed for styling
+ */
+import './index.css';
+import 'semantic-ui-less/semantic.less';
+import 'semantic-ui-css/semantic.min.css';
+import 'data/styles/index.scss';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

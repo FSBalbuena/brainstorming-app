@@ -1,0 +1,84 @@
+@import 'data/styles/mixins.scss';
+@import 'data/styles/variables.scss';
+
+.container {
+  width: 80% !important;
+  padding-top: $headerHeight;
+  @include respond-to('small') {
+    width: 90% !important;
+    padding-top: $headerSmallHeight;
+  }
+}
+
+.headerContainer {
+  margin-bottom: 30px;
+}
+
+.title {
+  color: $primaryColor !important;
+}
+.goal {
+  color: $primaryColor !important;
+  font-weight: normal;
+}
+.copyBox {
+  display: flex !important;
+  justify-content: flex-end;
+  align-items: center;
+  @include respond-to('small') {
+    justify-content: flex-start;
+  }
+}
+.copy {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.ideaFormBox {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  @include respond-to('small') {
+    margin-bottom: 2vh;
+  }
+}
+.stepsDisplay {
+  display: flex;
+  @include respond-to('small') {
+    flex-direction: column-reverse;
+  }
+}
+.tableBox {
+  flex: 2;
+  @include respond-to('small') {
+    flex: 1;
+  }
+}
+
+.tableBody {
+  max-height: 50vh;
+  overflow: auto;
+  @include respond-to('small') {
+    max-height: 70vh;
+  }
+}
+.ideaForm {
+  width: 80%;
+  margin: 0 auto;
+}
+.editIcon {
+  color: #4183c4 !important;
+  cursor: pointer;
+  &:hover {
+    color: #1174d8 !important;
+    transform: scale(1.3);
+    cursor: pointer;
+  }
+}
+.formGroup {
+  width: 90%;
+  margin: 0 auto;
+}
+.nameInput {
+  width: 40%;
+}
