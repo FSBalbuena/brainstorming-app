@@ -6,10 +6,10 @@ import { Form } from 'semantic-ui-react';
 import { BrainstormingForm } from 'components/Brainstorming';
 import styles from 'components/Brainstorming/brainstorming.module.scss';
 
-const FormContainer = ({ formRef, onSubmit, adminid }) => {
+const FormContainer = ({ formRef, onSubmit, adminId }) => {
   const formikProps = {
     initialValues: {
-      adminid,
+      adminId,
       admin: '',
       title: '',
       goal: '',
@@ -60,7 +60,7 @@ const FormContainer = ({ formRef, onSubmit, adminid }) => {
 };
 
 FormContainer.propTypes = {
-  adminid: PropTypes.string,
+  adminId: PropTypes.string,
   formRef: PropTypes.object,
   onSubmit: PropTypes.func,
 };

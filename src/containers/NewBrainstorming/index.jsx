@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import * as routes from 'data/routes';
 import { FormContainer } from 'containers/Brainstorming';
 import { CompleteModal } from 'components/Global';
 
-import { setSession } from 'store/actions/brainstorming';
 import { setId } from 'store/actions/auth';
+import { setSession } from 'store/actions/brainstorming';
 
 const NewBrainstorming = ({ history }) => {
   const dispatch = useDispatch();
@@ -23,7 +24,9 @@ const NewBrainstorming = ({ history }) => {
   };
 
   const handleSubmit = values => {
-    dispatch(setSession(values));
+    dispatch(setSession(values)).then(id =>
+      history.push(`${routes.BRAINSTORMING}/${id}`)
+    );
   };
 
   const goBackToHome = () => history.push('/');
@@ -48,6 +51,7 @@ const NewBrainstorming = ({ history }) => {
     onSubmit: handleSubmit,
     adminId: id,
   };
+
   return (
     <CompleteModal {...modalProps}>
       <FormContainer {...formProps} />
