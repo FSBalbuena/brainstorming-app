@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CompleteModal } from 'components/Global';
 import { EditIcon } from 'components/Brainstorming';
 import { RatingForm } from 'containers/Brainstorming';
@@ -12,6 +12,7 @@ const IdeaEditionContainer = ({ idea, canRate }) => {
   const [pros, setPros] = useState(idea.pros);
   const [cons, setCons] = useState(idea.cons);
   const handleRate = (_, { rating }) => setRating(rating);
+  const { id } = useSelector(state => state.brainstorming.data);
   const textFields = [
     {
       label: 'Pros',
@@ -36,7 +37,7 @@ const IdeaEditionContainer = ({ idea, canRate }) => {
     color: 'teal',
     onClick: () => {
       const newIdea = { ...idea, pros, cons, rating };
-      dispatch(updateIdea(newIdea));
+      dispatch(updateIdea(id, newIdea));
       setOpen(false);
     },
   };
@@ -47,9 +48,14 @@ const IdeaEditionContainer = ({ idea, canRate }) => {
     cancel,
     create,
   };
+  const handleEditIconClick = () => {
+    if (canRate) {
+      setOpen(true);
+    }
+  };
   return (
     <>
-      <EditIcon canRate={canRate} onClick={() => setOpen(true)} />
+      <EditIcon canRate={canRate} onClick={handleEditIconClick} />
       <CompleteModal {...modalProps}>
         <RatingForm
           textFields={textFields}

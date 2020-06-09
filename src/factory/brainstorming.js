@@ -43,7 +43,7 @@ export const headers = [
  * @param {number} currentStep
  * @param {function} onStepClick
  */
-export const makeSteps = (currentStep, onStepClick) =>
+export const makeSteps = (currentStep, onStepClick, isSessionAdmin) =>
   [
     {
       step: 1,
@@ -65,6 +65,6 @@ export const makeSteps = (currentStep, onStepClick) =>
     ...step,
     active: step.step === currentStep,
     completed: step.step < currentStep,
-    disabled: step.step === 3 && currentStep === 1,
+    disabled: !isSessionAdmin || (step.step === 3 && currentStep === 1),
     onClick: onStepClick,
   }));

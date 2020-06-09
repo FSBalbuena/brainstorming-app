@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { createIdea } from 'store/actions/brainstorming';
+import {
+  createIdea,
+  suscribeToIdeas,
+  unsuscribeToIdeas,
+  suscribeToStep,
+  unsuscribeToSteps,
+} from 'store/actions/brainstorming';
 import { IdeaTable, IdeaForm } from 'components/Brainstorming';
 import { headers } from 'factory/brainstorming';
 import styles from 'components/Brainstorming/brainstorming.module.scss';
 
 const StepViewsContainer = () => {
   const dispatch = useDispatch();
-  const {
-    data: { step, ideas },
-  } = useSelector(state => state.brainstorming);
-
   const [value, setValue] = useState('');
-  const canRate = step === 2;
+
+  const {
+    data: { step, ideas, id, adminId },
+  } = useSelector(state => state.brainstorming);
+  const authId = useSelector(state => state.auth.id);
+
+  const isSessionAdmin = authId === adminId;
+
+  useEffect(() => {
+    dispatch(suscribeToIdeas(id));
+    dispatch(suscribeToStep(id));
+    return () => {
+      dispatch(unsuscribeToIdeas(id));
+      dispatch(unsuscribeToSteps(id));
+    };
+  }, [id]);
+
+  const canRate = isSessionAdmin && step === 2;
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -21,7 +40,7 @@ const StepViewsContainer = () => {
       const newIdea = {
         text: value,
       };
-      dispatch(createIdea(newIdea));
+      dispatch(createIdea(id, newIdea));
       setValue('');
     }
   };
@@ -41,7 +60,9 @@ const StepViewsContainer = () => {
     <section className={styles.stepsDisplay}>
       {[1, 2].includes(step) && <IdeaTable {...tableProps} />}
       {[1].includes(step) && <IdeaForm {...formProps} />}
-      {[3].includes(step) && <p>Este es el 3er paso</p>}
+      {[3].includes(step) && (
+        <p>Here will be a button with a .csv download option</p>
+      )}
     </section>
   );
 };

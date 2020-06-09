@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import * as routes from 'data/routes';
 import { FormContainer } from 'containers/Brainstorming';
 import { CompleteModal } from 'components/Global';
 
-import { setSession } from 'store/actions/brainstorming';
 import { setId } from 'store/actions/auth';
+import { setSession } from 'store/actions/brainstorming';
 
 const NewBrainstorming = ({ history }) => {
   const dispatch = useDispatch();
   const formRef = useRef();
-  const id = useSelector(state => state.auth.id);
+  const adminId = useSelector(state => state.auth.id);
 
   useEffect(() => {
     dispatch(setId());
@@ -23,7 +24,10 @@ const NewBrainstorming = ({ history }) => {
   };
 
   const handleSubmit = values => {
-    dispatch(setSession(values));
+    const session = { ...values, adminId };
+    dispatch(setSession(session)).then(sessionId =>
+      history.push(`${routes.BRAINSTORMING}/${sessionId}`)
+    );
   };
 
   const goBackToHome = () => history.push('/');
@@ -46,8 +50,8 @@ const NewBrainstorming = ({ history }) => {
   const formProps = {
     formRef,
     onSubmit: handleSubmit,
-    adminId: id,
   };
+
   return (
     <CompleteModal {...modalProps}>
       <FormContainer {...formProps} />

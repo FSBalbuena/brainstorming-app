@@ -1,13 +1,26 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
-import { useSelector } from 'react-redux';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import * as routes from 'data/routes';
+
 import { SessionContainer } from 'containers/Brainstorming';
 import { NewBrainstorming } from 'containers';
 
 const Brainstorming = () => {
-  const { data: session } = useSelector(state => state.brainstorming);
-
-  return isEmpty(session) ? <NewBrainstorming /> : <SessionContainer />;
+  return (
+    <Switch>
+      <Route
+        path={`${routes.BRAINSTORMING}`}
+        exact
+        component={NewBrainstorming}
+      />
+      <Route
+        path={`${routes.BRAINSTORMING}/:id`}
+        exact
+        component={SessionContainer}
+      />
+      <Redirect to={routes.HOME} />
+    </Switch>
+  );
 };
 
 export default Brainstorming;

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { Divider } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUrl } from 'store/actions/brainstorming';
+import { withRouter } from 'react-router-dom';
+
+import { getSession } from 'store/actions/brainstorming';
 import { Session } from 'components/Brainstorming';
 import {
   HeaderContainer,
@@ -9,12 +11,12 @@ import {
   StepViewsContainer,
 } from 'containers/Brainstorming';
 
-const SessionContainer = () => {
+const SessionContainer = ({ match }) => {
   const dispatch = useDispatch();
   const { data: session } = useSelector(state => state.brainstorming);
   useEffect(() => {
     const url = window.location.href;
-    dispatch(setUrl(url));
+    dispatch(getSession(match.params.id, url));
   }, []);
   return (
     <Session>
@@ -26,4 +28,4 @@ const SessionContainer = () => {
   );
 };
 
-export default SessionContainer;
+export default withRouter(SessionContainer);

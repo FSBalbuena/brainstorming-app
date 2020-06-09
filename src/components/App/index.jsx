@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-
-import { Brainstorming } from 'views';
+import * as routes from 'data/routes';
+import { Brainstorming, Home } from 'views';
 
 function App() {
   return (
     <Switch data-test="app">
-      <Route path="/" exact component={Brainstorming} />
-      <Route path="/brainstorming" exact component={Brainstorming} />
-      <Redirect to="/" />
+      <Route path={routes.HOME} exact component={Home} />
+      <Route path={routes.BRAINSTORMING} component={Brainstorming} />
+      <Redirect to={routes.HOME} />
     </Switch>
   );
 }

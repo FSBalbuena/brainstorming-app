@@ -2,8 +2,7 @@ import {
   SET_BRAINSTORMING_SESSION,
   SET_BRAINSTORMING_URL,
   SET_BRAINSTORMING_STEP,
-  CREATE_BRAINSTORMING_IDEA,
-  UPDATE_BRAINSTORMING_IDEA,
+  SET_BRAINSTORMING_IDEAS,
 } from 'data/actionsConstants';
 
 const initialState = {
@@ -24,14 +23,8 @@ export default (state = initialState, action) => {
     case SET_BRAINSTORMING_STEP:
       data = { ...state.data, step: action.payload };
       return { ...state, data };
-    case CREATE_BRAINSTORMING_IDEA:
-      ideas = [action.payload, ...state.data.ideas];
-      data = { ...state.data, ideas };
-      return { ...state, data };
-    case UPDATE_BRAINSTORMING_IDEA:
-      ideas = state.data.ideas.map(idea =>
-        idea.id === action.payload.id ? { ...idea, ...action.payload } : idea
-      );
+    case SET_BRAINSTORMING_IDEAS:
+      ideas = action.payload;
       data = { ...state.data, ideas };
       return { ...state, data };
     default:
