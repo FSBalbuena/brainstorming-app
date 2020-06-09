@@ -6,6 +6,11 @@ import { SET_AUTH_ID } from 'data/actionsConstants';
 export const setAuthId = actionCreator(SET_AUTH_ID);
 
 export const setId = () => dispatch => {
-  const id = uuidv4();
-  dispatch(setAuthId(id));
+  let authId = localStorage.getItem('authId');
+  console.log(authId);
+  if (!authId) {
+    authId = uuidv4();
+    localStorage.setItem('authId', authId);
+  }
+  dispatch(setAuthId(authId));
 };
