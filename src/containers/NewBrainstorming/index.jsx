@@ -13,7 +13,7 @@ import { setSession } from 'store/actions/brainstorming';
 const NewBrainstorming = ({ history }) => {
   const dispatch = useDispatch();
   const formRef = useRef();
-  const id = useSelector(state => state.auth.id);
+  const adminId = useSelector(state => state.auth.id);
 
   useEffect(() => {
     dispatch(setId());
@@ -24,8 +24,9 @@ const NewBrainstorming = ({ history }) => {
   };
 
   const handleSubmit = values => {
-    dispatch(setSession(values)).then(id =>
-      history.push(`${routes.BRAINSTORMING}/${id}`)
+    const session = { ...values, adminId };
+    dispatch(setSession(session)).then(sessionId =>
+      history.push(`${routes.BRAINSTORMING}/${sessionId}`)
     );
   };
 
@@ -49,7 +50,6 @@ const NewBrainstorming = ({ history }) => {
   const formProps = {
     formRef,
     onSubmit: handleSubmit,
-    adminId: id,
   };
 
   return (

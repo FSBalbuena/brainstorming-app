@@ -5,7 +5,7 @@ import {
   SET_BRAINSTORMING_SESSION,
   SET_BRAINSTORMING_URL,
   SET_BRAINSTORMING_STEP,
-  CREATE_BRAINSTORMING_IDEA,
+  SET_BRAINSTORMING_IDEAS,
   UPDATE_BRAINSTORMING_IDEA,
 } from 'data/actionsConstants';
 
@@ -14,7 +14,7 @@ import { BrainstormingApi } from 'service';
 export const setBrainstormingSession = actionCreator(SET_BRAINSTORMING_SESSION);
 export const setBrainstormingUrl = actionCreator(SET_BRAINSTORMING_URL);
 export const setBrainstormingStep = actionCreator(SET_BRAINSTORMING_STEP);
-export const createBrainstormingIdea = actionCreator(CREATE_BRAINSTORMING_IDEA);
+export const setBrainstormingIdeas = actionCreator(SET_BRAINSTORMING_IDEAS);
 export const updateBrainstormingIdea = actionCreator(UPDATE_BRAINSTORMING_IDEA);
 
 export const setSession = body => dispatch => {
@@ -27,14 +27,12 @@ export const setSession = body => dispatch => {
     ideas: [],
   };
   const newSession = { ...initialSession, ...body };
-  console.log('dispatch(ON_SET_BRAINSTORMIN_SESSION)');
   return BrainstormingApi.createNewSession(newSession)
     .then(() => {
       dispatch(setBrainstormingSession(newSession));
       return newSession.id;
     })
     .catch(err => {
-      console.log('dispatch(ERROR_ON_SET_BRAINSTORMING_SESSION)');
       return Promise.reject(err);
     });
 };
@@ -49,32 +47,53 @@ export const getSession = (id, url) => dispatch => {
 export const setUrl = urlString => dispatch => {
   dispatch(setBrainstormingUrl(urlString));
 };
-export const setStep = stepNumber => dispatch => {
-  dispatch(setBrainstormingStep(stepNumber));
+export const setStep = (sessionId, stepNumber) => () => {
+  return BrainstormingApi.setStep(sessionId, stepNumber);
 };
-export const createIdea = body => dispatch => {
+
+export const createIdea = (sessionId, body) => () => {
   const initialIdea = {
-    id: new Date().getTime(),
+    id: makeId(),
+    createdAt: new Date().getTime(),
     text: '',
     rating: 0,
     pros: '',
     cons: '',
   };
   const newIdea = { ...initialIdea, ...body };
-
-  dispatch(createBrainstormingIdea(newIdea));
+  return BrainstormingApi.setIdea(sessionId, newIdea);
 };
-export const updateIdea = ideaObject => dispatch => {
-  dispatch(updateBrainstormingIdea(ideaObject));
+export const updateIdea = (sessionId, ideaObject) => () => {
+  return BrainstormingApi.setIdea(sessionId, ideaObject);
 };
-
-export const ideasSuscriptionCallback = () => null;
 
 export const suscribeToIdeas = id => dispatch => {
-  //suscribe to session's ideas
-  //dispatch(updateSessionIdeas(ideas))
+  return BrainstormingApi.sessionIdeas(id).on('value', data => {
+    const ideasObject = data.val();
+    if (ideasObject) {
+      const ideas = Object.entries(ideasObject).map(([id, idea]) => ({
+        id,
+        ...idea,
+      }));
+      ideas.sort((a, b) => a.createdAt - b.createdAt);
+      dispatch(setBrainstormingIdeas(ideas));
+    }
+  });
 };
 
-export const unsuscribeToIdeas = id => dispatch => {
-  //unsuscribe to session's ideas
+export const unsuscribeToIdeas = id => () => {
+  BrainstormingApi.sessionIdeas(id).off();
+};
+
+export const suscribeToStep = id => dispatch => {
+  return BrainstormingApi.sessionSteps(id).on('value', data => {
+    const step = data.val();
+    if (step) {
+      dispatch(setBrainstormingStep(step));
+    }
+  });
+};
+
+export const unsuscribeToSteps = id => () => {
+  BrainstormingApi.sessionSteps(id).off();
 };

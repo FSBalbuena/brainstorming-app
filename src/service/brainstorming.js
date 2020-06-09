@@ -24,6 +24,13 @@ class BrainstormingService {
       .once('value')
       .then(data => data.val());
 
+  sessionIdeas = id => this.db.ref(`brainstorming/${id}/ideas`);
+
+  setIdea = (sessionId, idea) =>
+    this.db.ref(`brainstorming/${sessionId}/ideas/${idea.id}`).set(idea);
+
+  sessionSteps = id => this.db.ref(`brainstorming/${id}/step`);
+  setStep = (id, value) => this.sessionSteps(id).set(value);
   createNewSession = body => this.session(body.id).set(body);
 }
 
