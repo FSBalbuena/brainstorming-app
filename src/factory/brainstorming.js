@@ -68,3 +68,29 @@ export const makeSteps = (currentStep, onStepClick, isSessionAdmin) =>
     disabled: !isSessionAdmin || (step.step === 3 && currentStep === 1),
     onClick: onStepClick,
   }));
+
+const makeRowFromArray = array => array.map(data => data.join(',') + '\n');
+
+const parseSessionToCSV = session => {
+  const sessionToCsv = { ...session, created: new Date().toDateString() };
+  const headerColumns = ['admin', 'title', 'goal', 'created'];
+  const ideasColumns = ['text', 'rating', 'pros', 'cons'];
+  const credit = `Download from ${sessionToCsv.url}`;
+  const headerText = headerColumns.map(field => sessionToCsv[field].trim());
+  const ideasArray = sessionToCsv.ideas.map(idea =>
+    ideasColumns.map(field => `${idea[field]}`.trim())
+  );
+  const headerRows = makeRowFromArray([
+    headerColumns.concat(credit),
+    headerText,
+  ]);
+  const ideasRows = makeRowFromArray([ideasColumns, ...ideasArray]);
+
+  return [...headerRows, , , 'Ideas \n', ...ideasRows].join('');
+};
+
+export const createCSVSession = session => {
+  const csv = parseSessionToCSV(session);
+  var csvData = new Blob([csv], { type: 'text/csv' });
+  return URL.createObjectURL(csvData);
+};

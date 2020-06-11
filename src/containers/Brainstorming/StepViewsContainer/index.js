@@ -9,6 +9,7 @@ import {
   unsuscribeToSteps,
 } from 'store/actions/brainstorming';
 import { IdeaTable, IdeaForm } from 'components/Brainstorming';
+import { Download } from 'containers/Brainstorming';
 import { headers } from 'factory/brainstorming';
 import styles from 'components/Brainstorming/brainstorming.module.scss';
 
@@ -60,9 +61,7 @@ const StepViewsContainer = () => {
     <section className={styles.stepsDisplay}>
       {[1, 2].includes(step) && <IdeaTable {...tableProps} />}
       {[1].includes(step) && <IdeaForm {...formProps} />}
-      {[3].includes(step) && (
-        <p>Here will be a button with a .csv download option</p>
-      )}
+      {[3].includes(step) && <Download />}
     </section>
   );
 };

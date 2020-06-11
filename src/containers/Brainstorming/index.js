@@ -5,3 +5,4 @@ export { default as StepsContainer } from './StepsContainer';
 export { default as StepViewsContainer } from './StepViewsContainer';
 export { default as IdeaEdition } from './IdeaEditionContainer';
 export { default as RatingForm } from './RatingFormContainer';
+export { default as Download } from './DownloadContainer';
