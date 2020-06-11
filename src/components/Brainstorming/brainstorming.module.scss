@@ -47,6 +47,18 @@
   @include respond-to('small') {
     flex-direction: column-reverse;
   }
+  .downloadBox {
+    flex: 1;
+    .downloadGrid {
+      min-height: 40vh;
+      .downloadOption {
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
 }
 .tableBox {
   flex: 2;
@@ -81,10 +93,4 @@
 }
 .nameInput {
   width: 40%;
-}
-.ratingSection {
-  .ratingBox {
-  }
-  .textArea {
-  }
 }
