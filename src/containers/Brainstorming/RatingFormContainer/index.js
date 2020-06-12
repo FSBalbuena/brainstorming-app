@@ -5,7 +5,7 @@ import styles from 'components/Brainstorming/brainstorming.module.scss';
 const RatingFormContainer = ({ ideaText, rating, handleRate, textFields }) => {
   return (
     <section className={styles.ratingSection}>
-      <Header content={`"${ideaText}"`} />
+      <Header content={`"${ideaText}"`} className={styles.title} />
       <div className={styleMedia.ratingBox}>
         <Rating icon="star" rating={rating} maxRating={5} onRate={handleRate} />
       </div>
