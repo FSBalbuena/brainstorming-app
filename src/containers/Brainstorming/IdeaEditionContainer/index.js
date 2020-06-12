@@ -60,6 +60,7 @@ const IdeaEditionContainer = ({ idea, canRate }) => {
         <RatingForm
           textFields={textFields}
           rating={rating}
+          ideaText={idea.text}
           handleRate={handleRate}
         />
       </CompleteModal>

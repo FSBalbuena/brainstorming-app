@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-
+import cx from 'classnames';
 import { useSelector } from 'react-redux';
 import {
   Divider,
@@ -26,7 +26,9 @@ const DownloadContainer = () => {
     }
   };
   const handlePDFClick = () => {
-    console.log(session);
+    if (isSessionAdmin) {
+      console.log(session);
+    }
   };
 
   const csvUrl = createCSVSession(session);
@@ -56,7 +58,10 @@ const DownloadContainer = () => {
               icon
               size="large"
               disabled={!isSessionAdmin}
-              className={isSessionAdmin && styles.downloadOption}
+              className={cx(
+                styles.title,
+                isSessionAdmin && styles.downloadOption
+              )}
               onClick={handleCSVClick}
             >
               <Icon name="file excel" color="green" />
@@ -74,7 +79,10 @@ const DownloadContainer = () => {
                 icon
                 size="large"
                 disabled={!isSessionAdmin}
-                className={isSessionAdmin && styles.downloadOption}
+                className={cx(
+                  styles.title,
+                  isSessionAdmin && styles.downloadOption
+                )}
                 onClick={handlePDFClick}
               >
                 <Icon name="file pdf" color="red" />
