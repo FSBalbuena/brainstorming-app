@@ -81,7 +81,7 @@ const HomeContainer = ({ history }) => {
       </section>
       <Divider />
       <Container className={styles.footerSlogan} textAlign={'center'}>
-        <Slogan />
+        <Slogan handleButton={handleButton} />
       </Container>
       <Footer />
     </main>
