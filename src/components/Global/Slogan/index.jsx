@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, Button } from 'semantic-ui-react';
 import styles from 'components/Global/home.module.scss';
 
-const Slogan = () => {
+const Slogan = ({ handleButton }) => {
   return (
     <>
       <Header
@@ -16,7 +16,12 @@ const Slogan = () => {
         className={styles.subTitle}
       />
       <div className={styles.sloganButtonGroup}>
-        <Button content="Start now!" size="big" color={'teal'} />
+        <Button
+          content="Start now!"
+          size="big"
+          color={'teal'}
+          onClick={handleButton}
+        />
         {/*
         <Button
           content="Quick demo"

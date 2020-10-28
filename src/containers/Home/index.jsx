@@ -67,7 +67,7 @@ const HomeContainer = ({ history }) => {
     <main>
       <Image src={dotsJointLogo} size="tiny" className={styles.logo} />
       <Container className={styles.container} textAlign={'center'}>
-        <Slogan />
+        <Slogan handleButton={handleButton} />
         <Image src={homeImage} className={styles.homeImage} />
       </Container>
       <UserReview {...firstReviewProps} />
