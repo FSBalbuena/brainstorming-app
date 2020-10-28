@@ -1,0 +1,39 @@
+@import 'data/styles/mixins.scss';
+@import 'data/styles/variables.scss';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
+  @include respond-to('regular') {
+    display: flex;
+    justify-content: center;
+  }
+}
+.reviewSegment {
+  width: 80%;
+  margin: 3vh auto !important;
+  @include respond-to('medium') {
+    width: 90%;
+  }
+}
+.reviewText {
+  color: $primaryColor !important;
+  width: 60%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 4vh !important;
+  @include respond-to('medium') {
+    width: 100%;
+    margin: 20px 5px !important;
+  }
+}
+.footerBox {
+  padding: 20px 30px;
+  background-color: #262626;
+  @include respond-to('medium') {
+    padding: 15px 10px;
+  }
+}
