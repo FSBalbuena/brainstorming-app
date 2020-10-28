@@ -1,0 +1,77 @@
+@import 'data/styles/mixins.scss';
+@import 'data/styles/variables.scss';
+
+.container {
+  height: 100vh;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 7vh;
+  font-size: 1.5vw;
+  @include respond-to('medium') {
+    font-size: inherit;
+  }
+}
+
+.footerSlogan {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.5vw;
+  padding: 6vw 0px;
+
+  @include respond-to('medium') {
+    font-size: inherit;
+  }
+}
+.logo {
+  position: absolute !important;
+  top: 20px;
+  left: 20px;
+  @include respond-to('medium') {
+    top: 10px;
+    left: 10px;
+  }
+}
+.homeImage {
+  position: absolute !important;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  height: 50%;
+  width: auto;
+  margin: 0 auto;
+}
+.sloganButtonGroup {
+  display: flex;
+  justify-content: center;
+  margin: 3vh auto;
+}
+.descriptionBox {
+  padding: 20px 0px;
+  @include respond-to('medium') {
+    padding: 20px;
+  }
+}
+.subTitle {
+  color: $primaryColor !important;
+}
+.title {
+  color: $primaryStrongColor !important;
+}
+.secondaryButton {
+  background: $primaryColor !important;
+  color: #f9f9f9 !important;
+}
+.copyBox {
+  display: flex;
+  justify-content: center;
+  @include respond-to('medium') {
+    justify-content: flex-start;
+  }
+}
