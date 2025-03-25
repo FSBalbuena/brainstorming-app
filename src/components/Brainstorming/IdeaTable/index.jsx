@@ -29,6 +29,7 @@ const IdeaTable = ({ canRate, headers, ideas }) => {
                   if (value === 'edit')
                     return (
                       <Table.Cell
+                        key={'edit' + value}
                         {...props}
                         content={<IdeaEdition canRate={canRate} idea={idea} />}
                       />

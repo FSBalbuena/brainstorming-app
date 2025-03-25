@@ -48,6 +48,7 @@ IdeaForm.propTypes = {
   value: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  defaultOpen: PropTypes.bool,
 };
 
 export default IdeaForm;

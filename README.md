@@ -13,6 +13,7 @@ Now we have the app running.
 # 2. Node must be at least @18.x.x to work with vite.
 
 - get rid of `node-sass` and use `sass`
+- I upgraded react-scripts to 4.x and eslint to 7.11 (Node 16 works fine.)
 
 ## Available Scripts
 
