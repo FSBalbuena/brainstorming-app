@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Divider } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import { getSession } from 'store/actions/brainstorming';
 import { Session } from 'components/Brainstorming';
 import {
@@ -26,6 +26,10 @@ const SessionContainer = ({ match }) => {
       <StepViewsContainer currentStep={session.step} />
     </Session>
   );
+};
+
+SessionContainer.propTypes = {
+  match: PropTypes.object,
 };
 
 export default withRouter(SessionContainer);

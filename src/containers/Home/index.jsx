@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import * as routes from 'data/routes';
-
+import PropTypes from 'prop-types';
 import { Divider, Image, Container } from 'semantic-ui-react';
 import selectSteps from 'assets/select-steps.png';
 import dotsJointLogo from 'assets/dotsjoint-logo.png';
@@ -88,4 +88,7 @@ const HomeContainer = ({ history }) => {
   );
 };
 
+HomeContainer.propTypes = {
+  history: PropTypes.object,
+};
 export default withRouter(HomeContainer);

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 /**
  * ---- Components
  */
@@ -13,20 +13,19 @@ import * as serviceWorker from './serviceWorker';
 /**
  * needed for styling
  */
-import './index.css';
 import 'semantic-ui-less/semantic.less';
-import 'semantic-ui-css/semantic.min.css';
+import './index.css';
 import 'data/styles/index.scss';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change

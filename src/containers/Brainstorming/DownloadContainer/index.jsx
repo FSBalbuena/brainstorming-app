@@ -42,6 +42,7 @@ const DownloadContainer = () => {
         href={csvUrl}
         ref={csvLink}
         target="_blank"
+        rel="noreferrer"
         style={{ visibility: 'hidden' }}
         download={fileName('csv')}
       ></a>

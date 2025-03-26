@@ -37,7 +37,7 @@ const StepViewsContainer = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!!value.trim()) {
+    if (value && value.trim()) {
       const newIdea = {
         text: value,
       };
