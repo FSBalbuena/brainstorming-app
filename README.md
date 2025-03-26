@@ -12,8 +12,11 @@ Now we have the app running.
 
 # 2. Node must be at least @18.x.x to work with vite.
 
-- get rid of `node-sass` and use `sass`
-- I upgraded react-scripts to 4.x and eslint to 7.11 (Node 16 works fine.)
+1. Migrate from `node-sass` and use `sass`
+2. I upgraded react-scripts to 4.x and eslint to 7.11 (Node 16 works fine.)
+3. I thought that maybe I could run a new CRA with Semantic UI project and check how dependencies are featured together, so I cleared semantic-ui, upgrade CRA related dependencies, and included semantic UI again following latests documentation.
+
+Now I'm able to run the app on Node 22.
 
 ## Available Scripts
 
