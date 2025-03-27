@@ -1,7 +1,7 @@
 import React from 'react';
 import Component from '.';
 import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from '@/utils/test';
+import { findByTestAtrr, checkProps } from '@/utils/testUtils';
 
 describe('HeaderContent test', () => {
   describe('Checking Proptypes', () => {

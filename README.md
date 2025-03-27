@@ -63,6 +63,25 @@ Now the app is running but I have "The CJS build of Vite's Node API is deprecate
 - fix lint errors
 - Remove `craco.config` file because is no longer used
 
+**Adding tests**
+
+- `yarn add -D jest jest-environment-jsdom`
+- I remove enzyme because is outdated.`yarn remove enzyme enzyme-adapter-react-16 jest-enzyme`
+- Re-organize my test dependencies
+
+```bash
+yarn remove @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event
+
+yarn add -D @testing-library/jest-dom @testing-library/react @testing-library/user-event
+```
+
+- create a config file for jest `yarn create jest`
+- add babel config file and preset dependencies `yarn add -D @babel/preset-react @babel/preset-env` and place it as `cjs`
+- remove enzyme from setupFile.
+- Add configs for `collectCoverageFrom` `coverageReporters` `coveragePathIgnorePatterns`
+- Isolate `setupTests.js` and rename `src/utils/test.js` to avoid matching
+- disable all tests, in order to re-write each one of them with rtl.
+
 ## Available Scripts
 
 ### Standars

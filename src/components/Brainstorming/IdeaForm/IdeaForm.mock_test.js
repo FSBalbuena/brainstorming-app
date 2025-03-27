@@ -1,4 +1,4 @@
-import { checkProps } from '@/utils/test';
+import { checkProps } from '@/utils/testUtils';
 
 import Component from './index';
 
