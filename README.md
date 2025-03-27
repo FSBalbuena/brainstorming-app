@@ -56,6 +56,13 @@ And only the ones starting with `VITE_` are exposed to client. So I have to upda
 
 Now the app is running but I have "The CJS build of Vite's Node API is deprecated." warning, so I need to add a `"type":"module"` to `package.json`
 
+**Adding linterns**
+
+- The eslint config file is a copy from the react-vite example.
+- on `eslint.config.js` need to extend the `globals` used, for node, and jest.
+- fix lint errors
+- Remove `craco.config` file because is no longer used
+
 ## Available Scripts
 
 ### Standars

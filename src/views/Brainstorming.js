@@ -12,7 +12,7 @@ const Brainstorming = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setId());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Switch>

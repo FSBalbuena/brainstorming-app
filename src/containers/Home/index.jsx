@@ -91,4 +91,6 @@ const HomeContainer = ({ history }) => {
 HomeContainer.propTypes = {
   history: PropTypes.object,
 };
-export default withRouter(HomeContainer);
+
+const RoutedHomeContainer = withRouter(HomeContainer);
+export default RoutedHomeContainer;

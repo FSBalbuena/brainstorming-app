@@ -17,7 +17,7 @@ const SessionContainer = ({ match }) => {
   useEffect(() => {
     const url = window.location.href;
     dispatch(getSession(match.params.id, url));
-  }, []);
+  }, [dispatch, match.params.id]);
   return (
     <Session>
       <HeaderContainer />
@@ -32,4 +32,6 @@ SessionContainer.propTypes = {
   match: PropTypes.object,
 };
 
-export default withRouter(SessionContainer);
+const RoutedSessionContainer = withRouter(SessionContainer);
+
+export default RoutedSessionContainer;
