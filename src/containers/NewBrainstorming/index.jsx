@@ -59,4 +59,6 @@ NewBrainstorming.propTypes = {
   setSession: PropTypes.func,
 };
 
-export default withRouter(NewBrainstorming);
+const RoutedNewBrainstorming = withRouter(NewBrainstorming);
+
+export default RoutedNewBrainstorming;

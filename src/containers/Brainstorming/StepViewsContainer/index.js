@@ -31,7 +31,7 @@ const StepViewsContainer = () => {
       dispatch(unsuscribeToIdeas(id));
       dispatch(unsuscribeToSteps(id));
     };
-  }, [id]);
+  }, [id, dispatch]);
 
   const canRate = isSessionAdmin && step === 2;
 
