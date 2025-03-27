@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const EditIcon = ({ canRate, ...rest }) => {
   return (

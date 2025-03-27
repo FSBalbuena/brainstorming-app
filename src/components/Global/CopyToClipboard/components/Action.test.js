@@ -1,7 +1,7 @@
 import React from 'react';
 import Action from './Action';
 import { shallow } from 'enzyme';
-import { findByTestAtrr } from 'utils/test';
+import { findByTestAtrr } from '@/utils/test';
 describe('ClipBoardAction test', () => {
   describe('Testing Render', () => {
     let wrapper;

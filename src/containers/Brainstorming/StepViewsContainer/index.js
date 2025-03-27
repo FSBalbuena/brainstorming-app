@@ -7,11 +7,11 @@ import {
   unsuscribeToIdeas,
   suscribeToStep,
   unsuscribeToSteps,
-} from 'store/actions/brainstorming';
-import { IdeaTable, IdeaForm } from 'components/Brainstorming';
-import { Download } from 'containers/Brainstorming';
-import { headers } from 'factory/brainstorming';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+} from '@/store/actions/brainstorming';
+import { IdeaTable, IdeaForm } from '@/components/Brainstorming';
+import { Download } from '@/containers/Brainstorming';
+import { headers } from '@/factory/brainstorming';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const StepViewsContainer = () => {
   const dispatch = useDispatch();

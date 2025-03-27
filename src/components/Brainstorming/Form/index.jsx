@@ -2,7 +2,7 @@ import React from 'react';
 import { Form } from 'semantic-ui-react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const BrainstormingForm = ({ formikProps, formRef, fields }) => (
   <Formik {...formikProps} data-test="form">

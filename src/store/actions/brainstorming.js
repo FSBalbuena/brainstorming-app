@@ -1,15 +1,15 @@
 import { v4 as makeId } from 'uuid';
 
-import { actionCreator } from 'utils/storeActions';
+import { actionCreator } from '@/utils/storeActions';
 import {
   SET_BRAINSTORMING_SESSION,
   SET_BRAINSTORMING_URL,
   SET_BRAINSTORMING_STEP,
   SET_BRAINSTORMING_IDEAS,
   UPDATE_BRAINSTORMING_IDEA,
-} from 'data/actionsConstants';
+} from '@/data/actionsConstants';
 
-import { BrainstormingApi } from 'service';
+import { BrainstormingApi } from '@/service';
 
 export const setBrainstormingSession = actionCreator(SET_BRAINSTORMING_SESSION);
 export const setBrainstormingUrl = actionCreator(SET_BRAINSTORMING_URL);

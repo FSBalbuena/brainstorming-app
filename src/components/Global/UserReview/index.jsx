@@ -1,7 +1,7 @@
 import React from 'react';
 import { Segment, Header, Icon, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import styles from 'components/Global/global.module.scss';
+import styles from '@/components/Global/global.module.scss';
 
 const UserReview = ({ review, author, rating }) => {
   const iconGroup = [];

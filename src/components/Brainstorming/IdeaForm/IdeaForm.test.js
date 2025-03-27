@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { checkProps, findByTestAtrr } from 'utils/test';
+import { checkProps, findByTestAtrr } from '@/utils/test';
 
 import Component from './index';
 

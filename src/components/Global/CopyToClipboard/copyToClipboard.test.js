@@ -2,7 +2,7 @@ import React from 'react';
 import Component from '.';
 import Action from './components/Action';
 import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from 'utils/test';
+import { findByTestAtrr, checkProps } from '@/utils/test';
 
 describe('ExampleComponent test', () => {
   describe('Checking Proptypes', () => {

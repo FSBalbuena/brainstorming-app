@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button, Popup } from 'semantic-ui-react';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const IdeaForm = ({ value, handleSubmit, handleChange, defaultOpen }) => {
   const [open, setOpen] = useState(defaultOpen);

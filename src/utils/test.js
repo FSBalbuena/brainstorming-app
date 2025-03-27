@@ -1,7 +1,7 @@
 import checkPropTypes from 'check-prop-types';
 
-import { createStoreWithMiddlewares } from 'store';
-import allReducers from 'store/reducers';
+import { createStoreWithMiddlewares } from '@/store';
+import allReducers from '@/store/reducers';
 
 /**
  * Receive a enzyme`s shallow component, search for an element with a data-test attr

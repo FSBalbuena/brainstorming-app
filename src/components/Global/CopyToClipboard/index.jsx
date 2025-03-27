@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Header, Input } from 'semantic-ui-react';
 import Action from './components/Action';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const CopyToClipboard = ({ url, text }) => {
   const textAreaRef = useRef(null);

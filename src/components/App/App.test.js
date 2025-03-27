@@ -1,7 +1,7 @@
 import React from 'react';
 import App from '.';
 import { shallow } from 'enzyme';
-import { findByTestAtrr } from 'utils/test';
+import { findByTestAtrr } from '@/utils/test';
 
 describe('App root test', () => {
   let wrapper = shallow(<App />);
