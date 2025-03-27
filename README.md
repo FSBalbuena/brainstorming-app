@@ -22,6 +22,7 @@ Now I'm able to run the app on Node 22.
 
 As I learned upgrading the app, my approach was to first run a new react/vite app and try to understand the current state of dependencies, and files.
 Based on it, I followed the next steps:
+**Basic Vite Config**
 
 - Deleted yarn.lock and node_modules then installed vite dev-dependencies
   `yarn add -D @eslint/js@^9.21.0 @types/react@^19.0.10 @types/react-dom@^19.0.4 @vitejs/plugin-react@^4.3.4 eslint@^9.21.0 eslint-plugin-react-hooks@^5.1.0 eslint-plugin-react-refresh@^0.4.19 globals@^15.15.0 vite@^6.2.0`
@@ -43,6 +44,17 @@ And only the ones starting with `VITE_` are exposed to client. So I have to upda
 - Vite does not allow `jsx` code in `js` extension files, so I needed to add `esbuild` and `optimizeDeps` properties to its config.
 - Vite does not recognize the base url setting for src, so i needed to add aliases on config's `resolve` property.
 - Now at days, code agents knows how to understand aliases changes, but VS code IntelliSense doesn't. In order to use VS code autocomplete, I needed to add a `jsconfig.json` again.
+
+**Fix Styles**
+
+- remove old styles dependencies `yarn remove @semantic-ui-react/craco-less @craco/craco`
+- add `less` `yarn add -D less`
+- Craco handled the scripts needed for CRA's internal use, in order to know how to work with semantic UI themes, now that I use Vite, I must handle that in the aliases, and change how theme reference files.
+- I'm kinda using to different styling approaches here, because I have less with semantic-UI and custom styles with sass.
+- I added `css` preprocesors configs to `vite.config.js` otherwise theme config fails.
+- I needed to migrate node-sass api to new dart sass api. `$ npm install -g sass-migrator` to have it global for all my projects, and then use it like `sass-migrator module --migrate-deps <your-entrypoint.scss>`. You can execute this for each failing file too, and for example, on my end, i needed to change `@/data/..` to `../../data` again using the migrator, because does not understand aliases.
+
+Now the app is running but I have "The CJS build of Vite's Node API is deprecated." warning, so I need to add a `"type":"module"` to `package.json`
 
 ## Available Scripts
 

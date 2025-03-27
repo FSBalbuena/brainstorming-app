@@ -1,5 +1,5 @@
-@import '@/data/styles/mixins.scss';
-@import '@/data/styles/variables.scss';
+@use '@/data/styles/mixins.scss';
+@use '@/data/styles/variables.scss';
 
 .container {
   height: 100vh;
@@ -12,7 +12,7 @@
   align-items: center;
   padding-top: 7vh;
   font-size: 1.5vw;
-  @include respond-to('medium') {
+  @include mixins.respond-to('medium') {
     font-size: inherit;
   }
 }
@@ -25,7 +25,7 @@
   font-size: 1.5vw;
   padding: 6vw 0px;
 
-  @include respond-to('medium') {
+  @include mixins.respond-to('medium') {
     font-size: inherit;
   }
 }
@@ -33,7 +33,7 @@
   position: absolute !important;
   top: 20px;
   left: 20px;
-  @include respond-to('medium') {
+  @include mixins.respond-to('medium') {
     top: 10px;
     left: 10px;
   }
@@ -54,24 +54,24 @@
 }
 .descriptionBox {
   padding: 20px 0px;
-  @include respond-to('medium') {
+  @include mixins.respond-to('medium') {
     padding: 20px;
   }
 }
 .subTitle {
-  color: $primaryColor !important;
+  color: variables.$primaryColor !important;
 }
 .title {
-  color: $primaryStrongColor !important;
+  color: variables.$primaryStrongColor !important;
 }
 .secondaryButton {
-  background: $primaryColor !important;
+  background: variables.$primaryColor !important;
   color: #f9f9f9 !important;
 }
 .copyBox {
   display: flex;
   justify-content: center;
-  @include respond-to('medium') {
+  @include mixins.respond-to('medium') {
     justify-content: flex-start;
   }
 }

@@ -26,6 +26,20 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      'semantic-ui/site': path.resolve(__dirname, './src/semantic-ui/site'),
+      '../../theme.config': path.resolve(
+        __dirname,
+        './src/semantic-ui/theme.config'
+      ),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        math: 'always',
+        relativeUrls: true,
+        javascriptEnabled: true,
+      },
     },
   },
 });
