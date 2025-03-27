@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import * as routes from 'data/routes';
-import { Brainstorming, Home } from 'views';
+import * as routes from '@/data/routes';
+import { Brainstorming, Home } from '@/views';
 
 function App() {
   return (

@@ -3,8 +3,8 @@ import * as yup from 'yup';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 
-import { BrainstormingForm } from 'components/Brainstorming';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import { BrainstormingForm } from '@/components/Brainstorming';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const FormContainer = ({ formRef, onSubmit }) => {
   const formikProps = {

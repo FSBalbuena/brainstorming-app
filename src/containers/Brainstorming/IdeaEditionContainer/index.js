@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { CompleteModal } from 'components/Global';
-import { EditIcon } from 'components/Brainstorming';
-import { RatingForm } from 'containers/Brainstorming';
-import { updateIdea } from 'store/actions/brainstorming';
+import { CompleteModal } from '@/components/Global';
+import { EditIcon } from '@/components/Brainstorming';
+import { RatingForm } from '@/containers/Brainstorming';
+import { updateIdea } from '@/store/actions/brainstorming';
 const IdeaEditionContainer = ({ idea, canRate }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);

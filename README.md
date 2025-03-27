@@ -40,6 +40,9 @@ And only the ones starting with `VITE_` are exposed to client. So I have to upda
 
 - Vite search for our main `index.html` file on root level, so I moved `src/index.html` to `index.html` and updated public folder's routing and included a new `script` tag needed on vite.
 - I created a `vite.config.js` file and added a `build` and `server` properties to match CRA's.
+- Vite does not allow `jsx` code in `js` extension files, so I needed to add `esbuild` and `optimizeDeps` properties to its config.
+- Vite does not recognize the base url setting for src, so i needed to add aliases on config's `resolve` property.
+- Now at days, code agents knows how to understand aliases changes, but VS code IntelliSense doesn't. In order to use VS code autocomplete, I needed to add a `jsconfig.json` again.
 
 ## Available Scripts
 

@@ -1,7 +1,7 @@
-import { actionCreator } from 'utils/storeActions';
+import { actionCreator } from '@/utils/storeActions';
 import { v4 as uuidv4 } from 'uuid';
 
-import { SET_AUTH_ID } from 'data/actionsConstants';
+import { SET_AUTH_ID } from '@/data/actionsConstants';
 
 export const setAuthId = actionCreator(SET_AUTH_ID);
 

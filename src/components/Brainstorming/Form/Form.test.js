@@ -1,7 +1,7 @@
 import React from 'react';
 import Component from '.';
 import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from 'utils/test';
+import { findByTestAtrr, checkProps } from '@/utils/test';
 import * as yup from 'yup';
 describe('ExampleComponent test', () => {
   describe('Checking Proptypes', () => {

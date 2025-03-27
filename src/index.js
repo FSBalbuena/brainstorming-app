@@ -3,19 +3,18 @@ import ReactDOM from 'react-dom/client';
 /**
  * ---- Components
  */
-import App from 'components/App';
+import App from '@/components/App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import store from 'store';
-import * as serviceWorker from './serviceWorker';
+import store from '@/store';
 
 /**
  * needed for styling
  */
 import 'semantic-ui-less/semantic.less';
 import './index.css';
-import 'data/styles/index.scss';
+import '@/data/styles/index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

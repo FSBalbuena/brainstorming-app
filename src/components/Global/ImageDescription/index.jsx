@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Header, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import defaultImage from 'assets/home-image.svg';
+import defaultImage from '@/assets/home-image.svg';
 const ImageDescription = ({ title, items, sectionRender }) => {
   return (
     <Grid container stackable>

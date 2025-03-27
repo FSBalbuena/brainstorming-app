@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const HeaderContent = ({ title, goal }) => (
   <>

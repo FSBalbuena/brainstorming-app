@@ -1,4 +1,4 @@
-import { SET_AUTH_ID } from 'data/actionsConstants';
+import { SET_AUTH_ID } from '@/data/actionsConstants';
 
 const initialState = {
   isLoading: false,

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import * as routes from 'data/routes';
+import * as routes from '@/data/routes';
 
-import { setId } from 'store/actions/auth';
+import { setId } from '@/store/actions/auth';
 import { useDispatch } from 'react-redux';
 
-import { SessionContainer } from 'containers/Brainstorming';
-import { NewBrainstorming } from 'containers';
+import { SessionContainer } from '@/containers/Brainstorming';
+import { NewBrainstorming } from '@/containers';
 
 const Brainstorming = () => {
   const dispatch = useDispatch();

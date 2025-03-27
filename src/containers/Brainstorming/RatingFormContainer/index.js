@@ -1,7 +1,7 @@
 import React from 'react';
 import { Rating, Form, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const RatingFormContainer = ({ ideaText, rating, handleRate, textFields }) => {
   return (
