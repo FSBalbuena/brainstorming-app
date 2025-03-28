@@ -24,7 +24,7 @@ const BrainstormingForm = ({ formikProps, formRef, fields }) => (
 );
 
 BrainstormingForm.propTypes = {
-  formRef: PropTypes.object,
+  formRef: PropTypes.func,
   fields: PropTypes.arrayOf(PropTypes.object).isRequired,
   formikProps: PropTypes.shape({
     initialValues: PropTypes.object,

@@ -72,7 +72,7 @@ Now the app is running but I have "The CJS build of Vite's Node API is deprecate
 ```bash
 yarn remove @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event
 
-yarn add -D @testing-library/jest-dom @testing-library/react @testing-library/user-event
+yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event
 ```
 
 - create a config file for jest `yarn create jest`
@@ -81,6 +81,21 @@ yarn add -D @testing-library/jest-dom @testing-library/react @testing-library/us
 - Add configs for `collectCoverageFrom` `coverageReporters` `coveragePathIgnorePatterns`
 - Isolate `setupTests.js` and rename `src/utils/test.js` to avoid matching
 - disable all tests, in order to re-write each one of them with rtl.
+- our app alliases are not resolved by jest, I must add them AND our styles, could not be managed, so in order to return an empty object I can use `identity-obj-proxy`
+
+```js
+//jest.config.js
+{
+  //...config,
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    '^@/(.*)$': '<rootDir>/src/$1',
+  }
+}
+```
+
+- add `verbose:true` in order to find legacy errors
+- add `"\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js"` to `moduleNameMapper` for png
 
 ## Available Scripts
 

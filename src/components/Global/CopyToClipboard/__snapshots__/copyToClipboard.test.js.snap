@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CopyToClipboard Rendering it renders with out crashing 1`] = `
+<div>
+  <div
+    class="copy"
+  >
+    <h5
+      class="ui header"
+    >
+      Invite your team
+    </h5>
+    <div
+      class="ui action input"
+    >
+      <input
+        type="text"
+        value="https/mockedUrl"
+      />
+      <button
+        class="ui teal icon right labeled button"
+      >
+        Copy
+        <i
+          aria-hidden="true"
+          class="copy icon"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Popup, Button, Icon } from 'semantic-ui-react';
 
-const Action = ({ open, onClick }) => (
+const Action = ({ open = false, onClick = () => {} }) => (
   <Popup
     content="Copied!"
     open={open}
-    data-test="copy-button"
     trigger={
       <Button color={'teal'} icon labelPosition="right" onClick={onClick}>
         {'Copy'}
@@ -15,11 +14,6 @@ const Action = ({ open, onClick }) => (
     }
   />
 );
-
-Action.defaultProps = {
-  open: false,
-  onClick: () => {},
-};
 
 Action.propTypes = {
   open: PropTypes.bool,

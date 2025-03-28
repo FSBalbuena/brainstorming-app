@@ -3,7 +3,10 @@ import { Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
-const HeaderContent = ({ title, goal }) => (
+const HeaderContent = ({
+  title = 'Brainstorming',
+  goal = 'This is your Goal',
+}) => (
   <>
     <Header data-test="session-title" as="h1" className={styles.title}>
       {title}
@@ -13,11 +16,6 @@ const HeaderContent = ({ title, goal }) => (
     </Header>
   </>
 );
-
-HeaderContent.defaultProps = {
-  title: 'Brainstorming',
-  goal: 'This is your Goal',
-};
 
 HeaderContent.propTypes = {
   title: PropTypes.string,

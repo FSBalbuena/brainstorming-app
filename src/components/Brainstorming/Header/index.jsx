@@ -28,8 +28,6 @@ const Header = ({ admin, title, url, goal }) => {
   );
 };
 
-Header.defaultProps = {};
-
 Header.propTypes = {
   admin: PropTypes.string,
   title: PropTypes.string,

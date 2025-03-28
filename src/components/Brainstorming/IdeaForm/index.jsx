@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Form, Button, Popup } from 'semantic-ui-react';
 import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
-const IdeaForm = ({ value, handleSubmit, handleChange, defaultOpen }) => {
+const IdeaForm = ({
+  value,
+  handleSubmit,
+  handleChange,
+  defaultOpen = true,
+}) => {
   const [open, setOpen] = useState(defaultOpen);
   const handleClose = () => setOpen(false);
   const handleEnter = e => (e.keyCode == 13 ? handleSubmit(e) : null);
@@ -41,9 +46,6 @@ const IdeaForm = ({ value, handleSubmit, handleChange, defaultOpen }) => {
   );
 };
 
-IdeaForm.defaultProps = {
-  defaultOpen: true,
-};
 IdeaForm.propTypes = {
   value: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,

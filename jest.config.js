@@ -5,6 +5,7 @@
 
 /** @type {import('jest').Config} */
 const config = {
+  verbose: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
@@ -18,6 +19,12 @@ const config = {
     'yarn.lock',
     'setupTests.js',
   ],
+  moduleNameMapper: {
+    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    '^@/(.*)$': '<rootDir>/src/$1',
+    uuid$: '<rootDir>/test/__mocks__/uuid.js',
+  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
