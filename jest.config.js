@@ -20,6 +20,7 @@ const config = {
     'setupTests.js',
   ],
   moduleNameMapper: {
+    '^@/service/brainstorming$': '<rootDir>/test/__mocks__/brainstorming.js',
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     '^@/(.*)$': '<rootDir>/src/$1',

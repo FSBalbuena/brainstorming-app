@@ -96,6 +96,7 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
 
 - add `verbose:true` in order to find legacy errors
 - add `"\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js"` to `moduleNameMapper` for png
+- mock `uuid` and my own `BranstormingService` class. (call it with `@/...` in order to match `moduleNameMapper` config)
 
 ## Available Scripts
 

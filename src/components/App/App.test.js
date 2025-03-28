@@ -16,6 +16,6 @@ describe('App root', () => {
         </BrowserRouter>
       </Provider>
     );
-    exopect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

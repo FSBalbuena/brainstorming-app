@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App root App main div renders 1`] = `
+<div>
+  <main>
+    <img
+      class="ui tiny image logo"
+      src="test-file-stub"
+    />
+    <div
+      class="ui center aligned container container"
+    >
+      <div
+        class="ui huge header title"
+      >
+        Empowering creative processes
+      </div>
+      <div
+        class="ui large header subTitle"
+      >
+        Easy, free, and collaborative Brainstorming sessions. 
+      </div>
+      <div
+        class="sloganButtonGroup"
+      >
+        <button
+          class="ui teal big button"
+        >
+          Start now!
+        </button>
+      </div>
+      <img
+        class="ui image homeImage"
+        src="test-file-stub"
+      />
+    </div>
+    <div
+      class="ui placeholder raised segment reviewSegment"
+    >
+      <div
+        class="ui center aligned container"
+      >
+        <div
+          class="ui large header reviewText"
+        >
+          “The creativity of a team is surprising when they don’t feel exposed and their ideas are taken into account objectively.”
+          <div
+            class="sub header"
+          >
+            - Angie Ojeda, Recruiting Manager at Nearsure
+          </div>
+        </div>
+        <span>
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+        </span>
+      </div>
+    </div>
+    <section
+      class="descriptionBox"
+    >
+      <div
+        class="ui container stackable grid"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="middle aligned nine wide column"
+          >
+            <div
+              class="ui teal large header"
+            >
+              Methodology approved.
+            </div>
+            <div
+              class="ui large list"
+              role="list"
+            >
+              <div
+                class="item"
+                role="listitem"
+              >
+                <i
+                  aria-hidden="true"
+                  class="teal check icon"
+                />
+                <div
+                  class="content"
+                >
+                  Ideas can't be deleted
+                </div>
+              </div>
+              <div
+                class="item"
+                role="listitem"
+              >
+                <i
+                  aria-hidden="true"
+                  class="teal check icon"
+                />
+                <div
+                  class="content"
+                >
+                  All ideas are shared, because they are submited anonimusly.
+                </div>
+              </div>
+              <div
+                class="item"
+                role="listitem"
+              >
+                <i
+                  aria-hidden="true"
+                  class="teal check icon"
+                />
+                <div
+                  class="content"
+                >
+                  Team discuss, leader hears, and ideas are scored.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="middle aligned seven wide column"
+          >
+            <div
+              class="copyBox"
+            >
+              <div
+                class="copy"
+              >
+                <h5
+                  class="ui header"
+                >
+                  Invite your team
+                </h5>
+                <div
+                  class="ui action input"
+                >
+                  <input
+                    type="text"
+                    value="https://www.dotsjoint.com"
+                  />
+                  <button
+                    class="ui teal icon right labeled button"
+                  >
+                    Copy
+                    <i
+                      aria-hidden="true"
+                      class="copy icon"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ui container stackable grid"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="middle aligned nine wide column"
+          >
+            <div
+              class="ui teal large header"
+            >
+              Protect the shyest!
+            </div>
+            <div
+              class="ui large list"
+              role="list"
+            >
+              <div
+                class="item"
+                role="listitem"
+              >
+                <i
+                  aria-hidden="true"
+                  class="teal check icon"
+                />
+                <div
+                  class="content"
+                >
+                  Is anonimous, no one feels exposed. Give wings to creativity!
+                </div>
+              </div>
+              <div
+                class="item"
+                role="listitem"
+              >
+                <i
+                  aria-hidden="true"
+                  class="teal check icon"
+                />
+                <div
+                  class="content"
+                >
+                  Objective scores, ideas are good or bad, no matter who wrote them.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="middle aligned seven wide column"
+          >
+            <div
+              class="ideaFormBox"
+            >
+              <form
+                class="ui form ideaForm"
+                data-test="form"
+              >
+                <div
+                  class="field"
+                >
+                  <label>
+                    Add a new idea
+                  </label>
+                  <textarea
+                    data-test="text-area"
+                    placeholder="This idea will solve the problem..."
+                    rows="3"
+                  />
+                </div>
+                <button
+                  class="ui teal right floated button"
+                  type="submit"
+                >
+                  Add
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+      class="ui placeholder raised segment reviewSegment"
+    >
+      <div
+        class="ui center aligned container"
+      >
+        <div
+          class="ui large header reviewText"
+        >
+          “The use of this tool has substantially improved the relationships between leaders and their work teams”
+          <div
+            class="sub header"
+          >
+            - Marcelo Luksenbergh, Backend Developer, Ring
+          </div>
+        </div>
+        <span>
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+          <i
+            aria-hidden="true"
+            class="yellow star big icon"
+          />
+        </span>
+      </div>
+    </div>
+    <section
+      class="descriptionBox"
+    >
+      <div
+        class="ui container stackable grid"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="middle aligned nine wide column"
+          >
+            <div
+              class="ui teal large header"
+            >
+              You are the leader!
+            </div>
+            <div
+              class="ui large list"
+              role="list"
+            >
+              <div
+                class="item"
+                role="listitem"
+              >
+                <i
+                  aria-hidden="true"
+                  class="teal check icon"
+                />
+                <div
+                  class="content"
+                >
+                  Decide when is time to go next step.
+                </div>
+              </div>
+              <div
+                class="item"
+                role="listitem"
+              >
+                <i
+                  aria-hidden="true"
+                  class="teal check icon"
+                />
+                <div
+                  class="content"
+                >
+                  Write down the pros and cons based on your team opinions
+                </div>
+              </div>
+              <div
+                class="item"
+                role="listitem"
+              >
+                <i
+                  aria-hidden="true"
+                  class="teal check icon"
+                />
+                <div
+                  class="content"
+                >
+                  Download the session for future reference.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="middle aligned seven wide column"
+          >
+            <img
+              class="ui image"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+      class="ui divider"
+    />
+    <div
+      class="ui center aligned container footerSlogan"
+    >
+      <div
+        class="ui huge header title"
+      >
+        Empowering creative processes
+      </div>
+      <div
+        class="ui large header subTitle"
+      >
+        Easy, free, and collaborative Brainstorming sessions. 
+      </div>
+      <div
+        class="sloganButtonGroup"
+      >
+        <button
+          class="ui teal big button"
+        >
+          Start now!
+        </button>
+      </div>
+    </div>
+    <div
+      class="footerBox"
+    >
+      <img
+        class="ui small image"
+        src="test-file-stub"
+      />
+    </div>
+  </main>
+</div>
+`;
