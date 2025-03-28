@@ -1,4 +1,4 @@
-import config from 'config/firebase';
+import config from '@/config/firebase';
 
 import app from 'firebase/app';
 import 'firebase/database';

@@ -2,9 +2,12 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Header, Input } from 'semantic-ui-react';
 import Action from './components/Action';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
-const CopyToClipboard = ({ url, text }) => {
+const CopyToClipboard = ({
+  url = 'https://...',
+  text = 'Invite your team',
+}) => {
   const textAreaRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -22,7 +25,7 @@ const CopyToClipboard = ({ url, text }) => {
     onClick: copyToClipboard,
   };
   return (
-    <div className={styles.copy} data-test="copy">
+    <div className={styles.copy}>
       <Header content={text} as="h5" />
       <Input
         ref={textAreaRef}
@@ -31,11 +34,6 @@ const CopyToClipboard = ({ url, text }) => {
       />
     </div>
   );
-};
-
-CopyToClipboard.defaultProps = {
-  url: 'https://...',
-  text: 'Invite your team',
 };
 
 CopyToClipboard.propTypes = {

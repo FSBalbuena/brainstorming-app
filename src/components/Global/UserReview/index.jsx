@@ -1,6 +1,7 @@
 import React from 'react';
 import { Segment, Header, Icon, Container } from 'semantic-ui-react';
-import styles from 'components/Global/global.module.scss';
+import PropTypes from 'prop-types';
+import styles from '@/components/Global/global.module.scss';
 
 const UserReview = ({ review, author, rating }) => {
   const iconGroup = [];
@@ -20,6 +21,12 @@ const UserReview = ({ review, author, rating }) => {
       </Container>
     </Segment>
   );
+};
+
+UserReview.propTypes = {
+  review: PropTypes.string,
+  author: PropTypes.string,
+  rating: PropTypes.number,
 };
 
 export default UserReview;

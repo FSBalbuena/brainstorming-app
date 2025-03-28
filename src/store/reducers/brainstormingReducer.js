@@ -3,7 +3,7 @@ import {
   SET_BRAINSTORMING_URL,
   SET_BRAINSTORMING_STEP,
   SET_BRAINSTORMING_IDEAS,
-} from 'data/actionsConstants';
+} from '@/data/actionsConstants';
 
 const initialState = {
   isLoading: false,

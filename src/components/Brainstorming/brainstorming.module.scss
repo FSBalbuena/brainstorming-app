@@ -1,12 +1,12 @@
-@import 'data/styles/mixins.scss';
-@import 'data/styles/variables.scss';
+@use '@/data/styles/mixins.scss';
+@use '@/data/styles/variables.scss';
 
 .container {
   width: 80% !important;
-  padding-top: $headerHeight;
-  @include respond-to('small') {
+  padding-top: variables.$headerHeight;
+  @include mixins.respond-to('small') {
     width: 90% !important;
-    padding-top: $headerSmallHeight;
+    padding-top: variables.$headerSmallHeight;
   }
 }
 
@@ -15,17 +15,17 @@
 }
 
 .title {
-  color: $primaryColor !important;
+  color: variables.$primaryColor !important;
 }
 .goal {
-  color: $primaryColor !important;
+  color: variables.$primaryColor !important;
   font-weight: normal;
 }
 .copyBox {
   display: flex !important;
   justify-content: flex-end;
   align-items: center;
-  @include respond-to('small') {
+  @include mixins.respond-to('small') {
     justify-content: flex-start;
   }
 }
@@ -38,13 +38,13 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  @include respond-to('small') {
+  @include mixins.respond-to('small') {
     margin-bottom: 2vh;
   }
 }
 .stepsDisplay {
   display: flex;
-  @include respond-to('small') {
+  @include mixins.respond-to('small') {
     flex-direction: column-reverse;
   }
   .downloadBox {
@@ -62,7 +62,7 @@
 }
 .tableBox {
   flex: 2;
-  @include respond-to('small') {
+  @include mixins.respond-to('small') {
     flex: 1;
   }
 }
@@ -70,7 +70,7 @@
 .tableBody {
   max-height: 50vh;
   overflow: auto;
-  @include respond-to('small') {
+  @include mixins.respond-to('small') {
     max-height: 70vh;
   }
 }

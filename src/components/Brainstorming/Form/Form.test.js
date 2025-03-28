@@ -1,30 +1,42 @@
 import React from 'react';
 import Component from '.';
-import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from 'utils/test';
+import { checkProps } from '@/utils/testUtils';
+import { render } from '@testing-library/react';
 import * as yup from 'yup';
-describe('ExampleComponent test', () => {
+
+const onSubmit = jest.fn();
+const DEFAULT_PROPS = {
+  formikProps: {
+    initialValues: {
+      name: '',
+      title: '',
+      goal: '',
+    },
+    validationSchema: yup.object().shape({
+      name: yup.string().required('Session`s admin required'),
+      title: yup.string().required('Session`s title required'),
+      goal: yup.string().required('Session`s goal required'),
+    }),
+    onSubmit,
+  },
+  formRef: jest.fn(),
+  fields: [
+    {
+      error: () => {},
+      name: 'name',
+      label: 'Name',
+      className: 'nameInput',
+      placeholder: 'John Doe',
+      Component: 'input',
+    },
+  ],
+  styles: {},
+};
+
+describe('Form', () => {
   describe('Checking Proptypes', () => {
     it('shouldn`t fire a warning if good props are passed', () => {
-      let expectedProps = {
-        formikProps: {
-          initialValues: {
-            name: '',
-            title: '',
-            goal: '',
-          },
-          validationSchema: yup.object().shape({
-            name: yup.string().required('Session`s admin required'),
-            title: yup.string().required('Session`s title required'),
-            goal: yup.string().required('Session`s goal required'),
-          }),
-          onSubmit: () => {},
-        },
-        formRef: {},
-        fields: [{}],
-        styles: {},
-      };
-      const propsErr = checkProps(Component, expectedProps);
+      const propsErr = checkProps(Component, DEFAULT_PROPS);
       expect(propsErr).toBeUndefined();
     });
     it('should fire a warning if text is not a string', () => {
@@ -36,32 +48,10 @@ describe('ExampleComponent test', () => {
   /*
    * ----------------------------------
    */
-  describe('Testing Render', () => {
-    let expectedProps = {
-      formikProps: {
-        initialValues: {
-          name: '',
-          title: '',
-          goal: '',
-        },
-        validationSchema: yup.object().shape({
-          name: yup.string().required('Session`s admin required'),
-          title: yup.string().required('Session`s title required'),
-          goal: yup.string().required('Session`s goal required'),
-        }),
-        onSubmit: () => {},
-      },
-      formRef: {},
-      fields: [{}],
-      styles: {},
-    };
-    let wrapper;
-    beforeEach(() => {
-      wrapper = shallow(<Component {...expectedProps} />);
-    });
+  describe('Rendering', () => {
     it('it renders with out crashing', () => {
-      let component = findByTestAtrr(wrapper, 'form');
-      expect(component.length).toBe(1);
+      const { container } = render(<Component {...DEFAULT_PROPS} />);
+      expect(container).toMatchSnapshot();
     });
   });
 });

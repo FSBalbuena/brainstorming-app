@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
-import footerLogo from 'assets/footer-logo.png';
-import styles from 'components/Global/global.module.scss';
+import footerLogo from '@/assets/footer-logo.png';
+import styles from '@/components/Global/global.module.scss';
 
 const Footer = () => {
   return (

@@ -2,7 +2,7 @@ import {
   SOME_ACTION_REQUEST,
   SOME_ACTION_SUCCEDED,
   SOME_ACTION_FAILED,
-} from 'data/actionsConstants';
+} from '@/data/actionsConstants';
 
 const initialState = {
   isLoading: false,

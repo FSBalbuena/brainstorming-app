@@ -1,16 +1,17 @@
 import React from 'react';
 import Component from '.';
-import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from 'utils/test';
+import { render, screen } from '@testing-library/react';
+import { checkProps } from '@/utils/testUtils';
+
+const DEFAULT_PROPS = {
+  title: 'Title',
+  goal: 'Goal',
+};
 
 describe('HeaderContent test', () => {
   describe('Checking Proptypes', () => {
     it('shouldn`t fire a warning if good props are passed', () => {
-      let expectedProps = {
-        title: 'Title',
-        goal: 'Goal',
-      };
-      const propsErr = checkProps(Component, expectedProps);
+      const propsErr = checkProps(Component, DEFAULT_PROPS);
       expect(propsErr).toBeUndefined();
     });
     it('should fire a warning if text is not a string', () => {
@@ -25,35 +26,29 @@ describe('HeaderContent test', () => {
   /*
    * ----------------------------------
    */
-  describe('Testing Render for session Title', () => {
-    let wrapper;
-    beforeEach(() => {
-      wrapper = shallow(<Component />);
-    });
+  describe('Rendering', () => {
     it('it renders with out crashing', () => {
-      let component = findByTestAtrr(wrapper, 'session-title');
-      expect(component.length).toBe(1);
+      render(<Component {...DEFAULT_PROPS} />);
+      let header = screen.getByRole('heading', { name: DEFAULT_PROPS.title });
+      expect(header).toBeInTheDocument();
     });
     it('it renders a default text if no props are given', () => {
-      let component = findByTestAtrr(wrapper, 'session-title');
-      let text = component.contains('Brainstorming');
-      expect(text).toBe(true);
+      render(<Component {...DEFAULT_PROPS} title={undefined} />);
+      let header = screen.getByRole('heading', { name: 'Brainstorming' });
+      expect(header).toBeInTheDocument();
     });
   });
 
   describe('Testing Render for session Goal', () => {
-    let wrapper;
-    beforeEach(() => {
-      wrapper = shallow(<Component />);
-    });
     it('it renders with out crashing', () => {
-      let component = findByTestAtrr(wrapper, 'session-goal');
-      expect(component.length).toBe(1);
+      render(<Component {...DEFAULT_PROPS} />);
+      let header = screen.getByRole('heading', { name: DEFAULT_PROPS.goal });
+      expect(header).toBeInTheDocument();
     });
     it('it renders a default text if no props are given', () => {
-      let component = findByTestAtrr(wrapper, 'session-goal');
-      let text = component.contains('This is your Goal');
-      expect(text).toBe(true);
+      render(<Component {...DEFAULT_PROPS} goal={undefined} />);
+      let header = screen.getByRole('heading', { name: 'This is your Goal' });
+      expect(header).toBeInTheDocument();
     });
   });
 });

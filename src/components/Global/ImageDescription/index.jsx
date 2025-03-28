@@ -1,7 +1,6 @@
 import React from 'react';
-import { Grid, Header, List, Image } from 'semantic-ui-react';
-import styles from 'components/Global/global.module.scss';
-import defaultImage from 'assets/home-image.svg';
+import { Grid, Header, List } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 const ImageDescription = ({ title, items, sectionRender }) => {
   return (
     <Grid container stackable>
@@ -25,8 +24,10 @@ const ImageDescription = ({ title, items, sectionRender }) => {
   );
 };
 
-ImageDescription.defaultProps = {
-  image: defaultImage,
+ImageDescription.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sectionRender: PropTypes.node.isRequired,
 };
 
 export default ImageDescription;

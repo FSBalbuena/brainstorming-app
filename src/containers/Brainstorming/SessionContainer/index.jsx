@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { Divider } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
-import { getSession } from 'store/actions/brainstorming';
-import { Session } from 'components/Brainstorming';
+import PropTypes from 'prop-types';
+import { getSession } from '@/store/actions/brainstorming';
+import { Session } from '@/components/Brainstorming';
 import {
   HeaderContainer,
   StepsContainer,
   StepViewsContainer,
-} from 'containers/Brainstorming';
+} from '@/containers/Brainstorming';
 
 const SessionContainer = ({ match }) => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const SessionContainer = ({ match }) => {
   useEffect(() => {
     const url = window.location.href;
     dispatch(getSession(match.params.id, url));
-  }, []);
+  }, [dispatch, match.params.id]);
   return (
     <Session>
       <HeaderContainer />
@@ -28,4 +28,10 @@ const SessionContainer = ({ match }) => {
   );
 };
 
-export default withRouter(SessionContainer);
+SessionContainer.propTypes = {
+  match: PropTypes.object,
+};
+
+const RoutedSessionContainer = withRouter(SessionContainer);
+
+export default RoutedSessionContainer;

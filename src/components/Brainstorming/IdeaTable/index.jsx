@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table, Rating, Popup } from 'semantic-ui-react';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
-import { IdeaEdition } from 'containers/Brainstorming';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
+import { IdeaEdition } from '@/containers/Brainstorming';
 
 const IdeaTable = ({ canRate, headers, ideas }) => {
   return (
@@ -29,6 +29,7 @@ const IdeaTable = ({ canRate, headers, ideas }) => {
                   if (value === 'edit')
                     return (
                       <Table.Cell
+                        key={'edit' + value}
                         {...props}
                         content={<IdeaEdition canRate={canRate} idea={idea} />}
                       />

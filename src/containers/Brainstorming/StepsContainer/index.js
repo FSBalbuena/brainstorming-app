@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setStep } from 'store/actions/brainstorming';
+import { setStep } from '@/store/actions/brainstorming';
 
-import { SessionSteps } from 'components/Brainstorming';
-import { makeSteps } from 'factory/brainstorming';
+import { SessionSteps } from '@/components/Brainstorming';
+import { makeSteps } from '@/factory/brainstorming';
 
 const StepsContainer = () => {
   const dispatch = useDispatch();

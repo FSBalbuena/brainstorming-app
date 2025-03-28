@@ -7,11 +7,11 @@ import {
   unsuscribeToIdeas,
   suscribeToStep,
   unsuscribeToSteps,
-} from 'store/actions/brainstorming';
-import { IdeaTable, IdeaForm } from 'components/Brainstorming';
-import { Download } from 'containers/Brainstorming';
-import { headers } from 'factory/brainstorming';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+} from '@/store/actions/brainstorming';
+import { IdeaTable, IdeaForm } from '@/components/Brainstorming';
+import { Download } from '@/containers/Brainstorming';
+import { headers } from '@/factory/brainstorming';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const StepViewsContainer = () => {
   const dispatch = useDispatch();
@@ -31,13 +31,13 @@ const StepViewsContainer = () => {
       dispatch(unsuscribeToIdeas(id));
       dispatch(unsuscribeToSteps(id));
     };
-  }, [id]);
+  }, [id, dispatch]);
 
   const canRate = isSessionAdmin && step === 2;
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!!value.trim()) {
+    if (value && value.trim()) {
       const newIdea = {
         text: value,
       };

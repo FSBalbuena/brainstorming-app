@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Feed } from 'semantic-ui-react';
 
-const AdminBox = ({ image, name, subtitle }) => (
+const AdminBox = ({ name = 'John Doe', subtitle = 'Admin', image = '' }) => (
   <Feed>
     <Feed.Event>
       <Feed.Label image={image} />
@@ -13,12 +13,6 @@ const AdminBox = ({ image, name, subtitle }) => (
     </Feed.Event>
   </Feed>
 );
-
-AdminBox.defaultProps = {
-  name: 'John Doe',
-  subtitle: 'Admin',
-  image: '',
-};
 
 AdminBox.propTypes = {
   name: PropTypes.string.isRequired,

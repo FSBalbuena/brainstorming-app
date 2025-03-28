@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import adminImage from 'assets/brainstorming.png';
+import adminImage from '@/assets/brainstorming.png';
 import { Grid } from 'semantic-ui-react';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
-import { AdminBox, HeaderContent } from 'components/Brainstorming';
-import { CopyToClipboard } from 'components/Global';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
+import { AdminBox, HeaderContent } from '@/components/Brainstorming';
+import { CopyToClipboard } from '@/components/Global';
 
 const Header = ({ admin, title, url, goal }) => {
   return (
@@ -27,8 +27,6 @@ const Header = ({ admin, title, url, goal }) => {
     </Grid>
   );
 };
-
-Header.defaultProps = {};
 
 Header.propTypes = {
   admin: PropTypes.string,

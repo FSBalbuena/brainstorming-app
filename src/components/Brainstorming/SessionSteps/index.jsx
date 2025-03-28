@@ -2,11 +2,11 @@ import React from 'react';
 import { Step } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-const SessionSteps = ({ steps }) => {
+const SessionSteps = ({ steps = [] }) => {
   return (
-    <Step.Group widths={3} ordered fluid data-test="session-step-group">
+    <Step.Group widths={3} ordered fluid>
       {steps.map(({ title, description, ...rest }) => (
-        <Step {...rest} key={title} data-test="session-step">
+        <Step {...rest} key={title}>
           <Step.Content>
             <Step.Title>{title}</Step.Title>
             {description && <Step.Description>{description}</Step.Description>}
@@ -15,10 +15,6 @@ const SessionSteps = ({ steps }) => {
       ))}
     </Step.Group>
   );
-};
-
-SessionSteps.defaultProps = {
-  steps: [],
 };
 
 SessionSteps.propTypes = {

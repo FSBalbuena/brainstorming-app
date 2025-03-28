@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import * as routes from 'data/routes';
-import { FormContainer } from 'containers/Brainstorming';
-import { CompleteModal } from 'components/Global';
+import * as routes from '@/data/routes';
+import { FormContainer } from '@/containers/Brainstorming';
+import { CompleteModal } from '@/components/Global';
 
-import { setSession } from 'store/actions/brainstorming';
+import { setSession } from '@/store/actions/brainstorming';
 
 const NewBrainstorming = ({ history }) => {
   const dispatch = useDispatch();
@@ -59,4 +59,6 @@ NewBrainstorming.propTypes = {
   setSession: PropTypes.func,
 };
 
-export default withRouter(NewBrainstorming);
+const RoutedNewBrainstorming = withRouter(NewBrainstorming);
+
+export default RoutedNewBrainstorming;

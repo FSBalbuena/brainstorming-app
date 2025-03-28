@@ -1,21 +1,21 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import * as routes from 'data/routes';
-
+import * as routes from '@/data/routes';
+import PropTypes from 'prop-types';
 import { Divider, Image, Container } from 'semantic-ui-react';
-import selectSteps from 'assets/select-steps.png';
-import dotsJointLogo from 'assets/dotsjoint-logo.png';
+import selectSteps from '@/assets/select-steps.png';
+import dotsJointLogo from '@/assets/dotsjoint-logo.png';
 import {
   CopyToClipboard,
   Slogan,
   UserReview,
   ImageDescription,
-} from 'components/Global';
-import { IdeaForm } from 'components/Brainstorming';
-import styles from 'components/Global/home.module.scss';
-import homeImage from 'assets/home-image.svg';
-import Footer from 'components/Global/Footer';
+} from '@/components/Global';
+import { IdeaForm } from '@/components/Brainstorming';
+import styles from '@/components/Global/home.module.scss';
+import homeImage from '@/assets/home-image.svg';
+import Footer from '@/components/Global/Footer';
 
 const HomeContainer = ({ history }) => {
   const handleButton = () => {
@@ -88,4 +88,9 @@ const HomeContainer = ({ history }) => {
   );
 };
 
-export default withRouter(HomeContainer);
+HomeContainer.propTypes = {
+  history: PropTypes.object,
+};
+
+const RoutedHomeContainer = withRouter(HomeContainer);
+export default RoutedHomeContainer;

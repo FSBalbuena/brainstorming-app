@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SessionSteps Testing Render it renders a empty state if no props are given 1`] = `
+<div>
+  <div
+    class="ui fluid ordered three steps"
+  >
+    <a
+      class="step"
+      step="1"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="title"
+        >
+          Make Ideas!
+        </div>
+        <div
+          class="description"
+        >
+          your team adds ideas until you decide to pass to the next step
+        </div>
+      </div>
+    </a>
+    <a
+      class="step"
+      step="2"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="title"
+        >
+          Score
+        </div>
+        <div
+          class="description"
+        >
+          Go deeper with your ideas, think pros and cons, and rate them.
+        </div>
+      </div>
+    </a>
+    <a
+      class="step"
+      step="3"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="title"
+        >
+          finish and share
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`SessionSteps Testing Render renders with out crashing 1`] = `
+<div>
+  <div
+    class="ui fluid ordered three steps"
+  >
+    <a
+      class="step"
+      step="1"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="title"
+        >
+          Make Ideas!
+        </div>
+        <div
+          class="description"
+        >
+          your team adds ideas until you decide to pass to the next step
+        </div>
+      </div>
+    </a>
+    <a
+      class="step"
+      step="2"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="title"
+        >
+          Score
+        </div>
+        <div
+          class="description"
+        >
+          Go deeper with your ideas, think pros and cons, and rate them.
+        </div>
+      </div>
+    </a>
+    <a
+      class="step"
+      step="3"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="title"
+        >
+          finish and share
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;

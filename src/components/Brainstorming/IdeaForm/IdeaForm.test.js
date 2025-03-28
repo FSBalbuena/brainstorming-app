@@ -1,18 +1,17 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { checkProps, findByTestAtrr } from 'utils/test';
+import { checkProps } from '@/utils/testUtils';
 
 import Component from './index';
 
-describe('Idea Form Test', () => {
+const DEFAULT_PROPS = {
+  value: '',
+  handleSubmit: () => null,
+  handleChange: () => null,
+};
+
+describe('IdeaForm', () => {
   describe('Checking Proptypes', () => {
     it('shouldn`t fire a warning if good props are passed', () => {
-      let expectedProps = {
-        value: '',
-        handleSubmit: () => null,
-        handleChange: () => null,
-      };
-      const propsErr = checkProps(Component, expectedProps);
+      const propsErr = checkProps(Component, DEFAULT_PROPS);
       expect(propsErr).toBeUndefined();
     });
     it('should fire a warning if text is not a string', () => {

@@ -10,8 +10,8 @@ import {
   Dimmer,
 } from 'semantic-ui-react';
 
-import { createCSVSession } from 'factory/brainstorming';
-import styles from 'components/Brainstorming/brainstorming.module.scss';
+import { createCSVSession } from '@/factory/brainstorming';
+import styles from '@/components/Brainstorming/brainstorming.module.scss';
 
 const DownloadContainer = () => {
   const { data: session } = useSelector(state => state.brainstorming);
@@ -42,6 +42,7 @@ const DownloadContainer = () => {
         href={csvUrl}
         ref={csvLink}
         target="_blank"
+        rel="noreferrer"
         style={{ visibility: 'hidden' }}
         download={fileName('csv')}
       ></a>

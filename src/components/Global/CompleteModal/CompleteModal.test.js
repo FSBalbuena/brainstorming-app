@@ -1,26 +1,30 @@
 import React from 'react';
 import Component from '.';
-import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from 'utils/test';
+import { checkProps } from '@/utils/testUtils';
+import { render, screen, fireEvent } from '@testing-library/react';
 
-describe('ModalForm test', () => {
+const onCancel = jest.fn();
+const onCreate = jest.fn();
+
+const DEFAULT_PROPS = {
+  header: 'Header',
+  cancel: {
+    content: 'Cancel',
+    color: 'red',
+    onClick: onCancel,
+  },
+  create: {
+    content: 'Create',
+    color: 'green',
+    onClick: onCreate,
+  },
+  children: <p></p>,
+};
+
+describe('CompleteModal', () => {
   describe('Checking Proptypes', () => {
     it('shouldn`t fire a warning if good props are passed', () => {
-      let expectedProps = {
-        header: 'Header',
-        cancel: {
-          content: 'Cancel',
-          color: 'red',
-          onClick: () => {},
-        },
-        create: {
-          content: 'Create',
-          color: 'green',
-          onClick: () => {},
-        },
-        children: <p></p>,
-      };
-      const propsErr = checkProps(Component, expectedProps);
+      const propsErr = checkProps(Component, DEFAULT_PROPS);
       expect(propsErr).toBeUndefined();
     });
     it('should fire a warning if text is not a string', () => {
@@ -32,64 +36,62 @@ describe('ModalForm test', () => {
   /*
    * ----------------------------------
    */
-  describe('Content Render', () => {
-    let wrapper;
-    beforeEach(() => {
-      wrapper = shallow(<Component />);
-    });
+  describe('Rendering', () => {
     it('renders modal', () => {
-      let component = findByTestAtrr(wrapper, 'modal');
-      expect(component.length).toBe(1);
+      render(<Component {...DEFAULT_PROPS} />);
+      let modal = screen.getByTestId('modal');
+      expect(modal).toBeInTheDocument();
     });
     it('renders header', () => {
-      let component = findByTestAtrr(wrapper, 'header');
-      expect(component.length).toBe(1);
+      render(<Component {...DEFAULT_PROPS} />);
+      let header = screen.getByText(DEFAULT_PROPS.header);
+      expect(header).toBeInTheDocument();
     });
     it('it renders a default text if no props are given', () => {
-      let component = findByTestAtrr(wrapper, 'header');
-      let hasText = component.contains('New Brainstorming');
-      expect(hasText).toBe(true);
+      render(<Component {...DEFAULT_PROPS} header={undefined} />);
+      let header = screen.getByText('New Brainstorming');
+      expect(header).toBeInTheDocument();
     });
     it('renders cancel button', () => {
-      let component = findByTestAtrr(wrapper, 'cancel');
-      expect(component.length).toBe(1);
+      render(<Component {...DEFAULT_PROPS} />);
+      let button = screen.getByRole('button', {
+        name: DEFAULT_PROPS.cancel.content,
+      });
+      expect(button).toBeInTheDocument();
     });
     it('renders create button', () => {
-      let component = findByTestAtrr(wrapper, 'create');
-      expect(component.length).toBe(1);
+      render(<Component {...DEFAULT_PROPS} />);
+      let button = screen.getByRole('button', {
+        name: DEFAULT_PROPS.create.content,
+      });
+      expect(button).toBeInTheDocument();
     });
   });
   /*
    * ----------------------------------
    */
-  describe('Test Click', () => {
-    //i have to spy on this
-    let spy = jest.fn();
-    let spy2 = jest.fn();
-    let props = {
-      header: 'Header',
-      cancel: {
-        content: 'Cancel',
-        color: 'red',
-        onClick: spy,
-      },
-      create: {
-        content: 'Create',
-        color: 'green',
-        onClick: spy2,
-      },
-      children: <p></p>,
-    };
-    let wrapper = shallow(<Component {...props} />);
-    it('Onclick fucntion must be called on pressing Cancel button', () => {
-      let component = findByTestAtrr(wrapper, 'cancel');
-      component.simulate('click');
-      expect(spy.mock.calls.length).toBe(1);
+  describe('events', () => {
+    describe('when cancel button is clicked', () => {
+      it('onCancel function must be called', () => {
+        render(<Component {...DEFAULT_PROPS} />);
+        expect(onCancel).not.toHaveBeenCalled();
+        let button = screen.getByRole('button', {
+          name: DEFAULT_PROPS.cancel.content,
+        });
+        fireEvent.click(button);
+        expect(onCancel).toHaveBeenCalled();
+      });
     });
-    it('Onclick fucntion must be called on pressing Create button', () => {
-      let component = findByTestAtrr(wrapper, 'create');
-      component.simulate('click');
-      expect(spy2.mock.calls.length).toBe(1);
+    describe('when create button is clicked', () => {
+      it('onCreate function must be called', () => {
+        render(<Component {...DEFAULT_PROPS} />);
+        expect(onCreate).not.toHaveBeenCalled();
+        let button = screen.getByRole('button', {
+          name: DEFAULT_PROPS.create.content,
+        });
+        fireEvent.click(button);
+        expect(onCreate).toHaveBeenCalled();
+      });
     });
   });
 });

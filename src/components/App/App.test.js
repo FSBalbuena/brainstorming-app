@@ -1,12 +1,21 @@
 import React from 'react';
 import App from '.';
-import { shallow } from 'enzyme';
-import { findByTestAtrr } from 'utils/test';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { testStore } from '@/utils/testUtils';
 
-describe('App root test', () => {
-  let wrapper = shallow(<App />);
+const store = testStore({});
+
+describe('App root', () => {
   it('App main div renders', () => {
-    const app = findByTestAtrr(wrapper, 'app');
-    expect(app.length).toBe(1);
+    const { container } = render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    );
+    expect(container).toMatchSnapshot();
   });
 });

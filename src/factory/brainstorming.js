@@ -86,7 +86,7 @@ const parseSessionToCSV = session => {
   ]);
   const ideasRows = makeRowFromArray([ideasColumns, ...ideasArray]);
 
-  return [...headerRows, , , 'Ideas \n', ...ideasRows].join('');
+  return [...headerRows, 'Ideas \n', ...ideasRows].join('');
 };
 
 export const createCSVSession = session => {
