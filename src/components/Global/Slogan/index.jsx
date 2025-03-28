@@ -3,7 +3,7 @@ import { Header, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styles from '@/components/Global/home.module.scss';
 
-const Slogan = ({ handleButton }) => {
+const Slogan = ({ handleButton = () => {} }) => {
   return (
     <>
       <Header
@@ -33,10 +33,6 @@ const Slogan = ({ handleButton }) => {
       </div>
     </>
   );
-};
-
-Slogan.defaultProps = {
-  handleButton: () => {},
 };
 
 Slogan.propTypes = {

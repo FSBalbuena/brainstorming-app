@@ -1,10 +1,16 @@
 import React from 'react';
 import Component from '.';
-import Action from './components/Action';
-import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from '@/utils/test';
+import { checkProps } from '@/utils/testUtils';
+import { render } from '@testing-library/react';
 
-describe('ExampleComponent test', () => {
+const url = 'https/mockedUrl';
+const text = 'Invite your team';
+const DEFAULT_PROPS = {
+  url,
+  text,
+};
+
+describe('CopyToClipboard', () => {
   describe('Checking Proptypes', () => {
     it('shouldn`t fire a warning if good props are passed', () => {
       let expectedProps = {
@@ -23,14 +29,10 @@ describe('ExampleComponent test', () => {
   /*
    * ----------------------------------
    */
-  describe('Testing Render', () => {
-    let wrapper;
-    beforeEach(() => {
-      wrapper = shallow(<Component />);
-    });
+  describe('Rendering', () => {
     it('it renders with out crashing', () => {
-      let component = findByTestAtrr(wrapper, 'copy');
-      expect(component.length).toBe(1);
+      const { container } = render(<Component {...DEFAULT_PROPS} />);
+      expect(container).toMatchSnapshot();
     });
   });
 });

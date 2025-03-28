@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Rendering it renders with out crashing 1`] = `
+<div>
+  <form
+    class="ui form"
+  >
+    <div
+      class="formGroup"
+    >
+      <input
+        class="nameInput"
+        label="Name"
+        name="name"
+        placeholder="John Doe"
+        value=""
+      />
+    </div>
+  </form>
+</div>
+`;

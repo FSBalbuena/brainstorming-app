@@ -1,24 +1,52 @@
 import React from 'react';
 import Component from '.';
-import { shallow } from 'enzyme';
-import { findByTestAtrr, checkProps } from '@/utils/test';
+import { checkProps } from '@/utils/testUtils';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-describe('SessionSteps test', () => {
+let firstStepClickHandler = jest.fn();
+let secondStepClickHandler = jest.fn();
+let thirdStepClickHandler = jest.fn();
+
+const mockSteps = [
+  {
+    step: 1,
+    title: 'Make Ideas!',
+    description:
+      'your team adds ideas until you decide to pass to the next step',
+    active: false,
+    completed: false,
+    disabled: false,
+    onClick: firstStepClickHandler,
+  },
+  {
+    step: 2,
+    title: 'Score',
+    description:
+      'Go deeper with your ideas, think pros and cons, and rate them.',
+    active: false,
+    completed: false,
+    disabled: false,
+    onClick: secondStepClickHandler,
+  },
+  {
+    step: 3,
+    title: 'finish and share',
+    active: false,
+    completed: false,
+    disabled: false,
+    onClick: thirdStepClickHandler,
+  },
+];
+
+const DEFAULT_PROPS = {
+  steps: mockSteps,
+};
+
+describe('SessionSteps', () => {
   describe('Checking Proptypes', () => {
     it('shouldn`t fire a warning if good props are passed', () => {
       let expectedProps = {
-        steps: [
-          {
-            step: 1,
-            title: 'Idear',
-            description:
-              'Tu equipo suma ideas hasta que decidas pasar al siguiente paso',
-            active: false,
-            completed: false,
-            disabled: false,
-            onClick: () => null,
-          },
-        ],
+        steps: mockSteps,
       };
       const propsErr = checkProps(Component, expectedProps);
       expect(propsErr).toBeUndefined();
@@ -33,73 +61,27 @@ describe('SessionSteps test', () => {
    * ----------------------------------
    */
   describe('Testing Render', () => {
-    let wrapper;
-    beforeEach(() => {
-      wrapper = shallow(<Component />);
+    it('renders with out crashing', () => {
+      const { container } = render(<Component {...DEFAULT_PROPS} />);
+      expect(container).toMatchSnapshot();
     });
-    it('it renders with out crashing if no props are given', () => {
-      let component = findByTestAtrr(wrapper, 'session-step-group');
-      expect(component.length).toBe(1);
+    it('it renders a empty state if no props are given', () => {
+      const { container } = render(<Component {...DEFAULT_PROPS} />);
+      expect(container).toMatchSnapshot();
     });
   });
   /*
    * ----------------------------------
    */
-  describe('Test Click', () => {
-    //i have to spy on this
-    let spy = jest.fn();
-    let spy2 = jest.fn();
-    let spy3 = jest.fn();
-
-    let props = {
-      steps: [
-        {
-          step: 1,
-          title: 'Idear',
-          description:
-            'Tu equipo suma ideas hasta que decidas pasar al siguiente paso',
-          active: false,
-          completed: false,
-          disabled: false,
-          onClick: spy,
-        },
-        {
-          step: 2,
-          title: 'Puntuar',
-          description: 'Se puntuan las mejores ideas',
-          active: false,
-          completed: false,
-          disabled: false,
-          onClick: spy2,
-        },
-        {
-          step: 3,
-          title: 'Terminar y descargar',
-          active: false,
-          completed: false,
-          disabled: false,
-          onClick: spy3,
-        },
-      ],
-    };
-
-    let wrapper = shallow(<Component {...props} />);
-
-    it('First step click calls its onClick method', () => {
-      let component = findByTestAtrr(wrapper, 'session-step');
-      component.at(0).simulate('click');
-      expect(spy.mock.calls.length).toBe(1);
-    });
-
-    it('Second step click calls its onClick method', () => {
-      let component = findByTestAtrr(wrapper, 'session-step');
-      component.at(1).simulate('click');
-      expect(spy2.mock.calls.length).toBe(1);
-    });
-    it('Third step click calls its onClick method', () => {
-      let component = findByTestAtrr(wrapper, 'session-step');
-      component.at(2).simulate('click');
-      expect(spy3.mock.calls.length).toBe(1);
+  describe('events', () => {
+    describe('when user clicks on a step', () => {
+      it('Should call its onClick method', () => {
+        render(<Component {...DEFAULT_PROPS} />);
+        expect(firstStepClickHandler).not.toHaveBeenCalled();
+        let step = screen.getByText(mockSteps[0].title);
+        fireEvent.click(step);
+        expect(firstStepClickHandler).toHaveBeenCalledTimes(1);
+      });
     });
   });
 });
