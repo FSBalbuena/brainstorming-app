@@ -96,12 +96,40 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
 
 - add `verbose:true` in order to find legacy errors
 - add `"\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js"` to `moduleNameMapper` for png
-- mock `uuid` and my own `BranstormingService` class. (call it with `@/...` in order to match `moduleNameMapper` config)
+- I needed to mock `uuid` and in order to do it, I must include a mock file, under `__mocks__` and reference it on `jest.config.js` (`moduleNameMapper`)
+- I'm not using enzyme anymore, and want to later test my app integrated to redux's store, so I started to test `app.js` with their providers, just a snapshot. My store config uses `BrainstormingApi` an instance of `BranstormingService` class where I have all my declared methods to use firebase real time. As I do not want to call firebase directly, I must include a mock file for this class, update jest.config.js to reference it, and also call it with alias `@/...` in order to match the new `moduleNameMapper` config.
+
+### Clean up
+
+- `yarn remove web-vitals moxios @babel/runtime` are not used.
 
 ## Available Scripts
 
-### Standars
+- In order to install dependencies:
+  `yarn`
+- run dev server
+  `yarn dev`
+- run lint
+  `yarn lint`
+- run tests
+  `yarn test`
+- test a particular file
+  `yarn test <file_relative_path>`
 
-### Brainstorming
+## Brainstorming
 
-A user can create a room and manage the brainstorming section on it.
+1. Create a new session
+2. Share the link with your team
+3. Allow everyone to add ideas
+4. click on the next step, where only you are able to score ideas.
+5. Advance to the next step and download your session as a CVS file.
+
+## Next steps
+
+- Add typescript
+- Upgrade dependencies
+- Refactor code to use firebase with vercel server functions
+- Refactor legacy code
+- Add E2E testing and extend coverage.
+- Add internationalization.
+- Add CI/CD
