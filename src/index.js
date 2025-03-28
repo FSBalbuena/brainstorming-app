@@ -13,6 +13,7 @@ import store from '@/store';
  * needed for styling
  */
 import 'semantic-ui-less/semantic.less';
+import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import '@/data/styles/index.scss';
 
