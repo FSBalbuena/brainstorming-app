@@ -124,6 +124,11 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
 4. click on the next step, where only you are able to score ideas.
 5. Advance to the next step and download your session as a CVS file.
 
+## Adding typescript.
+- add dependencies
+`yarn add -D @types/jest @types/node @types/react @types/react-dom typescript`
+
+
 ## Next steps
 
 - Add typescript
