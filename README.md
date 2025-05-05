@@ -134,6 +134,7 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
   - `tsconfig.json` This is the main config file
   - `tsconfig.app.json` This is the configuration for your application code — mostly the stuff used in the browser, like React components.
   - `tsconfig.node.json` This is for Node-specific code, lets Node-compatible tooling (e.g. Vite, ESLint, scripts) use a TypeScript config with appropriate settings, and avoids problems with ESM vs CommonJS when dealing with Node environments.
+- Change files extensions under `/src`
 
 ## Next steps
 
