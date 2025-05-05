@@ -28,8 +28,6 @@
     "esModuleInterop": true,
     "paths": {
       "@/*": ["./src/*"],
-      //"semantic-ui/site": ["./src/semantic-ui/site"],
-      //"../../theme.config": ["./src/semantic-ui/theme.config"]
     }
   },
   "include": ["src"]

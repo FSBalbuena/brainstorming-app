@@ -140,6 +140,7 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
   - You need some Babel transforms that ts-jest doesn’t support (rare).
 - Keep semantic ui aliases, and @ paths because are used on scss files, and css preprocessor does not understand it. 
 - keep preprocessorOptions on viteconfig, because is related to vite's build process.
+- Keep consistency on commonJs and ESM in test mocks
 
 ### Gradual opt-in
 we start strict but don't block the app from running due to TS errors:
@@ -153,9 +154,9 @@ Run app with TypeScript errors allowed, so I can:
 
 ## Next steps
 
-- Add typescript
 - Upgrade dependencies
 - Refactor code to use firebase with vercel server functions
+- Add strict mode on typescript
 - Refactor legacy code
 - Add E2E testing and extend coverage.
 - Add internationalization.

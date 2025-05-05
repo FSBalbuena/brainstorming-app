@@ -19,11 +19,11 @@ const config: Config = {
     'setupTests.ts',
   ],
   moduleNameMapper: {
-    '^@/service/brainstorming$': '<rootDir>/test/__mocks__/brainstorming.js',
+    '^@/service/brainstorming$': '<rootDir>/test/__mocks__/brainstorming.ts',
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     '^@/(.+)$': '<rootDir>/src/$1',
-    uuid$: '<rootDir>/test/__mocks__/uuid.js',
+    uuid$: '<rootDir>/test/__mocks__/uuid.ts',
   },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
