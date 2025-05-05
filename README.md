@@ -124,11 +124,39 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
 4. click on the next step, where only you are able to score ideas.
 5. Advance to the next step and download your session as a CVS file.
 
+## Adding typescript.
+- add dependencies
+`yarn add -D @types/jest @types/node @types/react @types/react-dom typescript`
+- Add config files: Copying the current structure for a vite/ts project.
+- Add aliases support `yarn add -D vite-tsconfig-paths`
+- Update vite.config.ts to Enforce configuration by tsconfig file: move from `build` folder to a common `dist`
+- We are going to use the same ts config structure as a new vite project and that is:
+  - `tsconfig.json` This is the main config file
+  - `tsconfig.app.json` This is the configuration for your application code — mostly the stuff used in the browser, like React components.
+  - `tsconfig.node.json` This is for Node-specific code, lets Node-compatible tooling (e.g. Vite, ESLint, scripts) use a TypeScript config with appropriate settings, and avoids problems with ESM vs CommonJS when dealing with Node environments.
+- Change files extensions under `/src`
+- Update test config: we can drop Babel entirely and just use ts-jest, a transformer that compiles TypeScript code in Jest... unless:
+  - You’re using non-standard syntax TypeScript can’t handle (like custom Babel plugins).
+  - You need some Babel transforms that ts-jest doesn’t support (rare).
+- Keep semantic ui aliases, and @ paths because are used on scss files, and css preprocessor does not understand it. 
+- keep preprocessorOptions on viteconfig, because is related to vite's build process.
+- Keep consistency on commonJs and ESM in test mocks
+
+### Gradual opt-in
+we start strict but don't block the app from running due to TS errors:
+Run app with TypeScript errors allowed, so I can:
+
+- Check if aliases and imports resolve
+
+- See if the app renders and behaves as expected
+
+- Gradually fix TypeScript errors later
+
 ## Next steps
 
-- Add typescript
 - Upgrade dependencies
 - Refactor code to use firebase with vercel server functions
+- Add strict mode on typescript
 - Refactor legacy code
 - Add E2E testing and extend coverage.
 - Add internationalization.
