@@ -135,6 +135,11 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
   - `tsconfig.app.json` This is the configuration for your application code — mostly the stuff used in the browser, like React components.
   - `tsconfig.node.json` This is for Node-specific code, lets Node-compatible tooling (e.g. Vite, ESLint, scripts) use a TypeScript config with appropriate settings, and avoids problems with ESM vs CommonJS when dealing with Node environments.
 - Change files extensions under `/src`
+- Update test config: we can drop Babel entirely and just use ts-jest, a transformer that compiles TypeScript code in Jest... unless:
+  - You’re using non-standard syntax TypeScript can’t handle (like custom Babel plugins).
+  - You need some Babel transforms that ts-jest doesn’t support (rare).
+- Update semantic ui aliases on ts
+- keep preprocessorOptions on viteconfig, because is related to vite's build process.
 
 ## Next steps
 

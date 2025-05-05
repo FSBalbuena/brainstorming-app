@@ -1,29 +1,28 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
+import { Config } from "jest";
 
-/** @type {import('jest').Config} */
-const config = {
+const config: Config = {
   verbose: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  transform: {
+    ".(ts|tsx)": ["ts-jest", { tsconfig: "tsconfig.app.json" }],
+  },
   testEnvironment: 'jsdom',
-  collectCoverageFrom: ['src/**/*.{js,jsx}'],
+  collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*.d.ts", "!**/vendor/**"],
   coverageReporters: ['json-summary', 'clover', 'text'],
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/coverage',
     'package.json',
     'yarn.lock',
-    'setupTests.js',
+    'setupTests.ts',
   ],
   moduleNameMapper: {
     '^@/service/brainstorming$': '<rootDir>/test/__mocks__/brainstorming.js',
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@/(.+)$': '<rootDir>/src/$1',
     uuid$: '<rootDir>/test/__mocks__/uuid.js',
   },
   // All imported modules in your tests should be mocked automatically
@@ -212,4 +211,4 @@ const config = {
   // watchman: true,
 };
 
-export default config;
+module.exports = config;
