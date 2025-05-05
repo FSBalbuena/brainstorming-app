@@ -127,7 +127,13 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
 ## Adding typescript.
 - add dependencies
 `yarn add -D @types/jest @types/node @types/react @types/react-dom typescript`
-
+- Add config files: Copying the current structure for a vite/ts project.
+- Add aliases support `yarn add -D vite-tsconfig-paths`
+- Update vite.config.ts to Enforce configuration by tsconfig file: move from `build` folder to a common `dist`
+- We are going to use the same ts config structure as a new vite project and that is:
+  - `tsconfig.json` This is the main config file
+  - `tsconfig.app.json` This is the configuration for your application code — mostly the stuff used in the browser, like React components.
+  - `tsconfig.node.json` This is for Node-specific code, lets Node-compatible tooling (e.g. Vite, ESLint, scripts) use a TypeScript config with appropriate settings, and avoids problems with ESM vs CommonJS when dealing with Node environments.
 
 ## Next steps
 
