@@ -138,8 +138,18 @@ yarn add -D @testing-library/dom @testing-library/jest-dom @testing-library/reac
 - Update test config: we can drop Babel entirely and just use ts-jest, a transformer that compiles TypeScript code in Jest... unless:
   - You’re using non-standard syntax TypeScript can’t handle (like custom Babel plugins).
   - You need some Babel transforms that ts-jest doesn’t support (rare).
-- Update semantic ui aliases on ts
+- Keep semantic ui aliases, and @ paths because are used on scss files, and css preprocessor does not understand it. 
 - keep preprocessorOptions on viteconfig, because is related to vite's build process.
+
+### Gradual opt-in
+we start strict but don't block the app from running due to TS errors:
+Run app with TypeScript errors allowed, so I can:
+
+- Check if aliases and imports resolve
+
+- See if the app renders and behaves as expected
+
+- Gradually fix TypeScript errors later
 
 ## Next steps
 
