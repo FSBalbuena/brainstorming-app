@@ -1,6 +1,9 @@
 [build]
   command = "yarn build"
-  functions = "netlify/functions"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 [dev]
   framework = "vite"
