@@ -1,37 +1,64 @@
 import config from '@/config/firebase';
 
-import app from 'firebase/app';
-import 'firebase/database';
-
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, get, child } from 'firebase/database';
 class BrainstormingService {
+  private db
   constructor() {
+    let app
     try {
-      app.initializeApp(config);
+      // Initialize Firebase
+      app = initializeApp(config);
+
     } catch (err) {
       if (!/already exists/.test(err.message)) {
         console.error(`BrainstormingService initialization error raised`);
+        console.log(err);
       }
     }
-    this.db = app.database();
+
+    this.db = getDatabase(app)
   }
+
+  private call = async (endpoint: string, data?: any) => {
+    const res = await fetch(`/.netlify/functions/${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: data ? JSON.stringify(data) : undefined,
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error calling ${endpoint}`);
+    }
+    return res.json();
+  };
+
   /*
- --- Brainstorming API ---
+ --- Brainstorming subscriber API ---
 */
-  session = id => this.db.ref(`brainstorming/${id}`);
 
-  getSession = id =>
-    this.session(id)
-      .once('value')
-      .then(data => data.val());
+sessionIdeas = sessionId => ref(this.db,`brainstorming/${sessionId}/ideas`);
+sessionSteps = sessionId => ref(this.db,`brainstorming/${sessionId}/step`);
+getSession = (sessionId: string) => get(child(ref(this.db), `brainstorming/${sessionId}`)).then((snapshot) => {
+  if (snapshot.exists()) {
+    return snapshot.val()
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error);
+});
 
-  sessionIdeas = id => this.db.ref(`brainstorming/${id}/ideas`);
 
-  setIdea = (sessionId, idea) =>
-    this.db.ref(`brainstorming/${sessionId}/ideas/${idea.id}`).set(idea);
+  /*
+ --- Brainstorming Writer API ---
+*/
 
-  sessionSteps = id => this.db.ref(`brainstorming/${id}/step`);
-  setStep = (id, value) => this.sessionSteps(id).set(value);
-  createNewSession = body => this.session(body.id).set(body);
+  createNewSession = body => this.call('createSession', body)
+
+  setIdea = (sessionId: string, idea) => this.call('setIdea', { sessionId, idea });
+
+  setStep = (sessionId, value) => this.call('setStep', { sessionId, value });
 }
 
 export default BrainstormingService;

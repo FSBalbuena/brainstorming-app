@@ -152,6 +152,11 @@ Run app with TypeScript errors allowed, so I can:
 
 - Gradually fix TypeScript errors later
 
+## Going serverless
+- Update brainstorming app
+- Create a route for each session need
+- Use `firebase-admin` for writing and `firebase` to subscribe.
+
 ## Next steps
 
 - Upgrade dependencies

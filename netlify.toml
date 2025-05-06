@@ -1,0 +1,8 @@
+[build]
+  command = "yarn build"
+  functions = "netlify/functions"
+
+[dev]
+  framework = "vite"
+  targetPort = 5173
+  port = 8888
