@@ -1,32 +1,35 @@
 export default class BrainstormingService {
+  private mockDb
   constructor() {
     console.log('Mock BrainstormingService initialized');
     this.mockDb = {}; // Simulated in-memory database
   }
+  
+
+  private call = async (endpoint: string, data?: any) => {
+    if(data){
+      this.mockDb[endpoint] = data
+    }
+    return Promise.resolve(this.mockDb[endpoint]);
+  };
 
   // Mock createNewSession
-  createNewSession = body => {
-    this.mockDb[`brainstorming/${body.id}`] = body;
-    return Promise.resolve(body);
-  };
+  createNewSession = body => this.call(`brainstorming/${body.id}`, body);
 
   // Mock getSession
-  getSession = id => {
-    return Promise.resolve(this.mockDb[`brainstorming/${id}`] || {});
-  };
+  getSession = id => this.call(`brainstorming/${id}`)
 
   // Mock setStep CHECK
-  setStep = (id, value) => {
-    this.mockDb[`brainstorming/${id}/step`] = value;
-    return Promise.resolve();
-  };
-  // Mock setIdea CHECK
+  setStep = (id, value) => this.call(`brainstorming/${id}/step`, value);
+
+ // Mock setIdea CHECK
   setIdea = (sessionId, idea) => {
-    if (!this.mockDb[`brainstorming/${sessionId}/ideas`]) {
-      this.mockDb[`brainstorming/${sessionId}/ideas`] = {};
+    const ideas = this.call(`brainstorming/${sessionId}/ideas`);
+    if (!ideas) {
+      this.call(`brainstorming/${sessionId}/ideas`, {});
     }
-    this.mockDb[`brainstorming/${sessionId}/ideas`][idea.id] = idea;
-    return Promise.resolve();
+    return this.call(`brainstorming/${sessionId}/ideas/${idea.id}`, idea);
+
   };
 
   // Simulated sessionIdeas reference

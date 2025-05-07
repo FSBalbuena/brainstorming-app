@@ -10,6 +10,8 @@ import {
 } from '@/data/actionsConstants';
 
 import { BrainstormingApi } from '@/service';
+import { onValue, off } from 'firebase/database';
+
 
 export const setBrainstormingSession = actionCreator(SET_BRAINSTORMING_SESSION);
 export const setBrainstormingUrl = actionCreator(SET_BRAINSTORMING_URL);
@@ -39,9 +41,14 @@ export const setSession = body => dispatch => {
 
 export const getSession = (id, url) => dispatch => {
   return BrainstormingApi.getSession(id).then(session => {
-    const withUrl = { ...session, url, ideas: [] };
+    const ideas = session.ideas ? Object.entries(session.ideas).map(([id, idea]) => ({
+      id,
+      ...idea,
+    })) : [];
+    ideas.sort((a, b) => a.createdAt - b.createdAt);
+    const withUrl = { ...session,ideas, url };
     dispatch(setBrainstormingSession(withUrl));
-  });
+  })
 };
 
 export const setUrl = urlString => dispatch => {
@@ -67,8 +74,9 @@ export const updateIdea = (sessionId, ideaObject) => () => {
   return BrainstormingApi.setIdea(sessionId, ideaObject);
 };
 
-export const suscribeToIdeas = id => dispatch => {
-  return BrainstormingApi.sessionIdeas(id).on('value', data => {
+export const suscribeToIdeas = sessionId => dispatch => {
+  const ideasRef = BrainstormingApi.sessionIdeas(sessionId)
+  return onValue(ideasRef, data => {
     const ideasObject = data.val();
     if (ideasObject) {
       const ideas = Object.entries(ideasObject).map(([id, idea]) => ({
@@ -81,12 +89,13 @@ export const suscribeToIdeas = id => dispatch => {
   });
 };
 
-export const unsuscribeToIdeas = id => () => {
-  BrainstormingApi.sessionIdeas(id).off();
+export const unsuscribeToIdeas = sessionId => () => {
+  off(BrainstormingApi.sessionIdeas(sessionId));
 };
 
-export const suscribeToStep = id => dispatch => {
-  return BrainstormingApi.sessionSteps(id).on('value', data => {
+export const suscribeToStep = sessionId => dispatch => {
+  const stepsRef = BrainstormingApi.sessionSteps(sessionId)
+  return onValue(stepsRef, data => {
     const step = data.val();
     if (step) {
       dispatch(setBrainstormingStep(step));
@@ -94,6 +103,6 @@ export const suscribeToStep = id => dispatch => {
   });
 };
 
-export const unsuscribeToSteps = id => () => {
-  BrainstormingApi.sessionSteps(id).off();
+export const unsuscribeToSteps = sessionId => () => {
+  off(BrainstormingApi.sessionSteps(sessionId));
 };

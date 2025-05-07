@@ -152,6 +152,22 @@ Run app with TypeScript errors allowed, so I can:
 
 - Gradually fix TypeScript errors later
 
+## Going serverless
+App used to have write and read perms on frontend. Now will be separate
+Using `firebase-admin` for writing and `firebase` to subscribe.
+
+- All writeable actions will be adressed by netlify functions under netlify/functions folder
+- All readable actions are going to be re-writed as modular, because firebase new versions recommend that, and keep it on front.
+
+Code is good to go, not great, for example right now firebase-admin and firebase has different approaches to be consumed, I need to make them both modular.
+Every thing will be adressed on the refactoring step.
+
+Tests are passing and ts checking are failing as is thinked to be.
+After securing the app, I will continue with typescript and refactoring.
+
+## refactor
+This app was meant to be a suite of tools, and now is just one particular solution
+
 ## Next steps
 
 - Upgrade dependencies

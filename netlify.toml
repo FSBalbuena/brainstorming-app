@@ -1,0 +1,11 @@
+[build]
+  command = "yarn build"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[dev]
+  framework = "vite"
+  targetPort = 5173
+  port = 8888
